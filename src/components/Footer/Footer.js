@@ -1,5 +1,10 @@
 import React from 'react'
 import footerStyle from '../Footer/footer.module.css'
+import Icon from '../../assets/icons/Group.svg'
+import facebook from '../../assets/icons/Vector.svg'
+import twitter from '../../assets/icons/Vector (1).svg'
+import instagram from '../../assets/icons/Vector (2).svg'
+import youtube from '../../assets/icons/Vector (3).svg'
 
 
 const Footer = () => {
@@ -8,7 +13,7 @@ const Footer = () => {
             <div className={footerStyle.firstFooterContainer}>
 
                 <div className={footerStyle.logoContainer}>
-                    <img src="Group.svg" alt="logo" />
+                    <img src={Icon} alt="logo" />
                     <h2>Sapiens</h2>
                 </div>
 
@@ -37,20 +42,20 @@ const Footer = () => {
             </div>
 
 
-            {/* <div className="second-footer-container">
+            <div className={footerStyle.secondFooterContainer}>
                 <hr />
 
-                <div className="social-media-container">
-                    <img src="Vector.svg" alt="facebook" />
-                    <img src="Vector (1).svg" alt="twitter" />
-                    <img src="Vector (2).svg" alt="instagram" />
-                    <img src="Vector (3).svg" alt="youtube" />
+                <div className={footerStyle.socialMediaContainer}>
+                    <img src={facebook} alt="facebook" />
+                    <img src={twitter} alt="twitter" />
+                    <img src={instagram} alt="instagram" />
+                    <img src={youtube} alt="youtube" />
                 </div>
 
                 <hr />
             </div>
 
-            <p className="copy-rights">&copy; sapiens.com/ All rights reserved</p> */}
+            <p className={footerStyle.copyRights}>&copy; sapiens.com/ All rights reserved</p>
         </footer>
     )
 }
