@@ -1,4 +1,4 @@
-import { BookCover } from "../../assets/images/bookcover.jpg";
+import BookCover  from "../../assets/images/bookcover.jpg";
 const BookCard = () => {
   return (
     <>
