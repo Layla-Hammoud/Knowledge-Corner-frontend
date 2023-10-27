@@ -1,11 +1,15 @@
-import BookCard from "./components/BookCard/BookCard";
-import Footer from "./components/Footer/Footer";
+import React from "react";
+
+import Footer from "./components/Footer/Footer.js";
+
 
 function App() {
   return (
     <div className="App">
-      <BookCard/>
-      <Footer/>
+
+      <Footer />
+
+
     </div>
   );
 }
