@@ -1,0 +1,17 @@
+.figure{
+    width: 250px;
+    height: 440px;
+}
+.image{
+    width: 250px;
+    height: 350px;
+}
+.figcaption{
+    text-align: center;
+}
+.figcaption>p{
+ margin: 10px 0;
+}
+.filled{
+    color: #f4c542;
+}
