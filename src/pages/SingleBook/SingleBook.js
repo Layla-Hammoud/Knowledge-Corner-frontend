@@ -1,11 +1,19 @@
-import BookCard from "../BookCard/BookCard";
+import BookCard from "../../components/BookCard/BookCard";
+import BookCover from "../../assets/images/bookcover.jpg";
 import style from '../../SharedStyle.module.css'
+import Stars from "../../components/Stars/Stars";
 function SingleBook() {
+  let rating=3;
   return (
     <section>
       <div className={style.mainInfoContainer}>
         <article className={style.imgContainer}>
-          <BookCard />
+          <img className={style.image} src={BookCover} alt="Book cover"/>
+          <div className={style.StarSingleContainer}> 
+            {[1, 2, 3, 4, 5].map((star) => (
+              <Stars key={star} stars={star} rating={rating}/>
+            ))}
+          </div>
         </article>
         <article className={style.infoContainer}>
             <h3 className={style.info}>Atomic Habits: An Easy & Proven Way to Build Good Habits & Break Bad Ones</h3>

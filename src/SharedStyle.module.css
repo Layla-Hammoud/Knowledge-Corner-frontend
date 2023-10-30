@@ -14,15 +14,25 @@
 .info{
     padding: 10px;
     line-height: var(--line-height);
+ 
 }
 .imgContainer{
     padding-top: 4em;
-    margin-left: 4em ;
+    margin-left: 3em ;
+    width:250px;
+
 
 }
 .suggestedBookTitle{
     margin: 2em 4em;
 
+}
+.image{
+    width: 100%;
+    height:auto
+}
+.StarSingleContainer{
+    text-align: center;
 }
 @media only screen and (max-width:768px) {
     .mainInfoContainer{

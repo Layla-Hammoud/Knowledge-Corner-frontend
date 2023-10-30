@@ -1,5 +1,6 @@
 import BookCover from "../../assets/images/bookcover.jpg";
 import style from "./BookCard.module.css";
+import Stars from "../Stars/Stars";
 const BookCard = () => {
   let rating = 4;
   return (
@@ -11,14 +12,9 @@ const BookCard = () => {
             <strong>Memory</strong>
           </p>
           <p>Hana Hope</p>
-          <div>
+          <div className={style.StarContainer}> 
             {[1, 2, 3, 4, 5].map((star) => (
-              <span
-                key={star}
-                className={`${rating >= star ? style.filled : ""}`}
-              >
-                &#9733;
-              </span>
+              <Stars key={star} stars={star} rating={rating}/>
             ))}
           </div>
         </figcaption>
