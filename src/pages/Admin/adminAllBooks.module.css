@@ -1,0 +1,41 @@
+.allBooks{
+    margin-top: 50px;
+}
+
+table{
+    margin: 0 auto;
+    
+}
+
+tr > th{
+    background-color: #F5F5F5;
+    padding: 10px;
+    font-size: 15px;
+    width: 200px;
+    /* border-bottom: 1px solid rgb(199, 195, 195); */
+}
+
+td{
+    text-align: center;
+    padding: 20px;
+    border-bottom: 1px solid rgb(199, 195, 195);
+}
+
+tbody{
+    border-bottom: 50px solid black;
+}
+
+
+.updateDelete{
+    border: none;
+    cursor: pointer;
+}
+
+@media only screen and (max-width: 600px){
+
+    th, td {
+        padding: 4px 8px; 
+      }
+
+}
+
