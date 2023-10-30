@@ -1,4 +1,3 @@
-
 import React from "react";
 import NavBar from "./components/NavBar/NavBar";
 // we have to import pages component in order to work in route

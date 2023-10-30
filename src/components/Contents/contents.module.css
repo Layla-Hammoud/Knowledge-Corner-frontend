@@ -1,0 +1,79 @@
+.contentsComponent{
+    margin-bottom: 20px;
+}
+
+
+.contentsComponent > h1{
+    text-align: center;
+    margin-bottom: 40px;
+}
+
+.imageContainer{
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    column-gap: 150px;
+    row-gap: 20px;
+}
+
+.imageContainer > img {
+    width: 300px;
+}
+
+.borderComponent{
+    display: flex;
+    flex-wrap: wrap;
+    text-align: center;
+    justify-content: center;
+    column-gap: 220px;
+    row-gap: 30px;
+}
+
+  .singleBorder{
+    /* background-color: red; */
+    display: flex;
+    flex: 0 0 calc(18% - 50px);
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: 150px;
+    padding: 5px;
+    margin: 5px;
+    box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.5);
+    border-radius: 5px;
+  }
+
+  .contentsComponent > h1{
+    margin-top: 70px;
+    text-align: center;
+  }
+
+  .contentsComponent > p{
+   width: 80%;
+   text-align: center;
+   margin: 0 auto;
+   font-size: 20px;
+  }
+
+
+@media (max-width: 1100px){
+    .imageContainer > img {
+        min-width: 250px;
+        
+    }
+    .singleBorder{
+        flex: 0 0 calc(40% - 50px);
+    }
+}
+
+@media (max-width: 700px){
+    .singleBorder{
+        flex: 0 0 calc(60% - 50px)
+    }
+}
+
+@media (max-width : 350px){
+    .singleBorder{
+        flex: 0 0 calc(100% - 50px)
+    }
+}
