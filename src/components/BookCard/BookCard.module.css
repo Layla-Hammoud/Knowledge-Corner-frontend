@@ -1,6 +1,7 @@
 .figure{
     width: 250px;
     height: 440px;
+    margin: 0 2em;
 }
 .image{
     width: 250px;
@@ -11,7 +12,4 @@
 }
 .figcaption>p{
  margin: 10px 0;
-}
-.filled{
-    color: #f4c542;
 }
