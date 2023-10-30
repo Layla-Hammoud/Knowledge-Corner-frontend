@@ -56,18 +56,12 @@ hr{
 }
 
 @media only screen and (max-width: 700px){
-    .footerComponent{
-        background-color: red;
-    }
     .menuListContainer{
         flex-direction: column;
     }
 }
 
 @media only screen and (max-width:400px){
-    .footerComponent{
-        background-color: green;
-    }
     .firstFooterContainer{
         flex-direction: column;
         justify-content: center;
