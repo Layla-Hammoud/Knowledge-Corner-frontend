@@ -8,19 +8,14 @@ import AdminAllCategories from './adminAllCategories';
 function adminBooks() {
   return (
     <div>
-      {/* <AdminNavbar/>
-      <AdminAllBooks/> */}
-
-<AdminNavbar />
+  
+      <AdminNavbar />
       <Routes>
-        <Route path='/' element={<AdminAllBooks/>}></Route>
-        <Route path='/adminAllAuthors' element={<AdminAllAuthors/>}></Route>
-        <Route path='/adminCategories' element={<AdminAllCategories/>}></Route>
+        <Route path='adminAllBooks' element={<AdminAllBooks />}/>
+        <Route path='adminAllAuthors' element={<AdminAllAuthors />}/>
+        <Route path='adminAllCategories' element={<AdminAllCategories />}/>
       </Routes>
-{/* 
-      <Routes>
-        <Route path="/AllAuthors" element={<AdminBooks />}></Route>
-      </Routes> */}
+      
     </div>
   )
 }
