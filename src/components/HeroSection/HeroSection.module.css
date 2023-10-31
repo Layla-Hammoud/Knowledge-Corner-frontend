@@ -1,0 +1,72 @@
+.heroSectionComponent{
+    color: #03151E;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    color: var(--text-color);
+    width: var(--container-width);
+    margin: 0 auto;
+    line-height: var(--line-height);
+    font-size: var(--font-size);
+    margin-bottom: 15px;
+}
+
+.libraryIntro{
+    display: flex;
+    flex-direction: column;
+    row-gap: 70px;
+    width: 25%;
+}
+
+.libraryIntro > p:first-child{
+    font-size: 40px;
+}
+
+.heroImage{
+    width: 45%;
+}
+
+.exploreButton {
+    background-color: #03151E; 
+    color: #fff; 
+    padding: 10px; /* Padding for the button */
+    border: none; 
+    border-radius: var(--border-radius); 
+    font-size: 1.5rem; 
+    width: 220px;
+    height: 70px;
+    cursor: pointer; 
+    transition: background-color 0.3s, color 0.3s; /* Add a smooth color transition on hover */
+  }
+  
+  .exploreButton:hover {
+    background-color: #fff; 
+    color: #03151E;
+  }
+
+
+
+  @media (max-width: 1100px) {
+    .heroSectionComponent {
+      flex-direction: column; /* Stack content vertically */
+      align-items: center; /* Center items vertically */
+      /* background-color: red; */
+      text-align: center;
+    }
+  
+    .libraryIntro {
+      width: 100%; /* Full width for smaller screens */
+      row-gap: 0px;
+    }
+  
+    .heroImage {
+      display: none; /* Hide the image for smaller screens */
+    }
+  
+    .exploreButton {
+      width: 35%; 
+      font-size: 1.2rem;
+      margin: 0 auto;
+    }
+  }
+  
