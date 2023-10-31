@@ -1,0 +1,194 @@
+.booksContainer {
+  min-height: 8vh;
+  margin: 4%;
+  display: grid;
+  grid-template-columns: 20% 80%;
+  column-gap: 0%;
+}
+.bookSearch {
+  margin: 25px auto;
+}
+.booksCategory {
+  /* background-color: bisque; */
+}
+.booksList {
+  /* background-color: aquamarine; */
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  justify-items: center;
+}
+
+/* Book card */
+.figure {
+  height: 440px;
+}
+.image {
+  width: 140px;
+  height: 225px;
+}
+.figcaption {
+  width: 1fr;
+  /* background-color: bisque; */
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+.figcaption > p {
+  margin: 5px 0;
+}
+.filled {
+  color: #f4c542;
+}
+
+/* search fild */
+.searchButton {
+  border-radius: 10px;
+  background-color: white;
+  color: #03151e;
+  border: 1px solid #03151e;
+  /* width: 100px; */
+  width: 10%;
+  height: 20px;
+  text-align: center;
+  cursor: pointer;
+}
+.searchButton:hover {
+  background-color: #03151e;
+  color: white;
+  border: none;
+}
+
+.inputSearch {
+  width: 30%;
+  margin-right: 29px;
+}
+.bookSearch {
+  margin: 41px;
+  display: flex;
+  justify-content: center;
+}
+/* category filed */
+.booksCategory h2 {
+  font-size: 14px;
+  padding: 10px;
+}
+.bookCheckbox {
+  display: flex;
+  align-items: center;
+  line-height: 20px;
+}
+.bookCheckbox input {
+  margin-right: 5px;
+}
+.booksCategory {
+  /* display: flex; */
+  border: 1px #ccc solid;
+  padding: 10px;
+}
+/* filter fildes */
+.filterCategories img {
+  width: 20px;
+  height: 20px;
+}
+.filterCategories {
+  display: none;
+  margin: 20px;
+  /* display: flex; */
+  justify-content: center;
+  align-items: center;
+}
+.filterCategories button {
+  position: absolute;
+  cursor: pointer;
+  border: none;
+  background-color: transparent;
+  right: 63px;
+}
+.filterCategories input {
+  border: none;
+  text-align: center;
+  width: 53%;
+  margin-right: 72px;
+}
+.bookSearch {
+  margin: 0 auto;
+}
+
+@media (max-width: 480px) {
+  .booksContainer {
+    min-height: 8vh;
+    margin: 4%;
+    display: grid;
+    grid-template-columns: 100%;
+    column-gap: 0%;
+  }
+  .booksList {
+    /* background-color: aquamarine; */
+    display: grid;
+    grid-template-columns: repeat(1, 1fr);
+    justify-items: center;
+  }
+  .open {
+    display: none;
+    height: auto;
+    background-color: white;
+  }
+  .bookSearch {
+    margin: 25px auto;
+  }
+  .filterCategories input {
+    border: none;
+    text-align: center;
+    width: 53%;
+    margin-right: 4rem;
+  }
+  .filterCategories img {
+    width: 20px;
+    height: 17px;
+    margin-top: 4px;
+  }
+  .filterCategories {
+    display: contents;
+    margin: 20px;
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+    width: 84%;
+  }
+  .filterCategories button {
+    position: absolute;
+    cursor: pointer;
+    border: none;
+    background-color: transparent;
+    right: 8rem;
+  }
+  /* category filed */
+  .booksCategory h2 {
+    font-size: 14px;
+    padding: 10px;
+  }
+  .bookCheckbox {
+    display: flex;
+    align-items: center;
+    line-height: 20px;
+  }
+  .bookCheckbox input {
+    margin-right: 5px;
+  }
+  .booksCategory {
+    border: 1px black solid;
+    padding: 10px;
+  }
+  .searchButton {
+    border-radius: 0px;
+    background-color: white;
+    color: #03151e;
+    border: 1px solid #03151e;
+    /* width: 100px; */
+    width: 16%;
+    height: 20px;
+    text-align: center;
+    cursor: pointer;
+  }
+}

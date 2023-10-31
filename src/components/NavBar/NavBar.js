@@ -6,9 +6,14 @@ import Icone from "../../assets/icons/Group.svg";
 import navBarStyle from "./navbar.module.css";
 
 const NavBar = () => {
-  const [menuOpen, setMenuOpen] = useState(false);
+  const [menuOpenn, setMenuOpenn] = useState(false);
   const [isActive, setActive] = useState([false, false, false]);
   const [isResponsive, setIsResponsive] = useState(window.innerWidth <= 480);
+
+  const handleSearch = () => {
+    setMenuOpenn(!menuOpenn);
+    console.log("clicked") // Toggle the menuOpen state
+  };
 
   useEffect(() => {
     // Check the window width and set the isResponsive state when the component mounts
@@ -38,9 +43,7 @@ const NavBar = () => {
         </div>
         <div
           className={navBarStyle.navMenu}
-          onClick={() => {
-            setMenuOpen(!menuOpen);
-          }}
+          onClick={handleSearch} // Use handleClick function here
         >
           <span></span>
           <span></span>
@@ -48,7 +51,7 @@ const NavBar = () => {
         </div>
 
         <ul
-          className={`${navBarStyle.navUl} ${menuOpen ? navBarStyle.open : ""}`}
+          className={`${navBarStyle.navUl} ${menuOpenn ? navBarStyle.open : ""}`}
         >
           <li>
             <NavLink
