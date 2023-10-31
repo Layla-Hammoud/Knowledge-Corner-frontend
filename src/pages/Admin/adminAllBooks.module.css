@@ -1,0 +1,95 @@
+.allBooks{
+    display: flex;
+    column-gap: 10px;
+    margin: 50px 10px;
+    justify-content: center;
+    align-items: center;
+}
+
+/* table{
+    margin: 0 auto;
+} */
+
+tr > th{
+    background-color: #F5F5F5;
+    text-align: center;
+    padding: 20px;
+    font-size: 15px;
+    width: 200px;
+    height: 60px;
+    /* border-bottom: 1px solid rgb(199, 195, 195); */
+}
+
+tr > td{
+    text-align: center;
+    padding: 20px;
+    font-size: 15px;
+    width: 200px;
+    height: 60px;
+    border-bottom: 1px solid rgb(199, 195, 195);
+}
+
+.buttonContainer{
+    display: flex;
+    flex-direction: column;
+    row-gap: 20px;
+}
+
+.updateDelete{
+    border: none;
+    cursor: pointer;
+    padding: 10px;
+    height: 50px;
+}
+
+@media only screen and (max-width: 600px){
+
+    table{
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+
+    thead > tr {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+    }
+
+    tbody > tr {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+    }
+
+    th, td {
+        padding: 4px 8px; 
+      }
+}
+
+
+@media only screen and (max-width: 470px){
+
+    .allBooks{
+        flex-direction: column;
+        row-gap: 10px;
+    }
+
+    .buttonContainer{
+        flex-direction: row;
+        column-gap: 10px;
+    }
+
+    tr > td , tr > th {
+        width: 180px;
+    }
+}
+
+@media only screen and (max-width: 400px){
+    tr > td , tr > th {
+        width: 120px;
+    }
+}
+
