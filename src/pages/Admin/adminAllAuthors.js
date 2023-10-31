@@ -1,31 +1,29 @@
 import React from 'react'
 import adminAllBooksStyle from '../Admin/adminAllBooks.module.css'
-import AdminNavbar from './adminNavbar'
 import x from '../../assets/icons/862px-Delete-button 1.svg'
 import update from '../../assets/icons/Vector (4).svg'
 
 
-function adminAllBooks() {
+function adminAllAuthors() {
     return (
-    <div>
         <div className={adminAllBooksStyle.allBooks}>
 
             <table>
                 <thead>
                     <tr>
-                        <th>Title</th>
-                        <th>Author</th>
-                        <th>Genre</th>
-                        <th>ISBN</th>
+                        <th>Name</th>
+                        <th>Email</th>
+                        <th>Birth Date</th>
+                        <th>Location</th>
                         <th>Rating</th>
                     </tr>
                 </thead>
                 <tbody>
                     <tr>
-                        <td>Love Story</td>
-                        <td>Alex</td>
-                        <td>Drama</td>
-                        <td>00101315465</td>
+                        <td>Buzz</td>
+                        <td>example@gmail.com</td>
+                        <td>15/20/1999</td>
+                        <td>Australia</td>
                         <td>rating</td>
                     </tr>
                 </tbody>
@@ -37,8 +35,7 @@ function adminAllBooks() {
             </div>
 
         </div>
-        </div>
     )
 }
 
-export default adminAllBooks
+export default adminAllAuthors

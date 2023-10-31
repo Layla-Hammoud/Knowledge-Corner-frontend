@@ -11,6 +11,7 @@ root.render(
     <BrowserRouter>
       {/*this as a router (to links all pages to a specific route), to keep track on all links which we have */}
       <App />
+      
     </BrowserRouter>
   </React.StrictMode>
 );

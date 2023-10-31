@@ -29,6 +29,16 @@
     background-color: white;
 }
 
+.threeButton{
+    border: none;
+    font-size: 20px;
+    background-color: transparent;
+    font-weight: bold;
+    cursor: pointer;
+    text-decoration: none;
+    color: black;
+}
+
 .innerDiv > img{
     width: 20%;
 }
@@ -47,6 +57,7 @@
     font-size: 20px;
     border-radius: 20px;
     width: fit-content;
+    cursor: pointer;
 }
 
 @media only screen and (max-width: 700px){
@@ -72,8 +83,8 @@
         column-gap: 10px;
     }
 
-    .innerDiv > h2{
-        font-size: 80%;
+    .threeButton{
+        font-size: 100%;
     }
 
     .addContainer{
