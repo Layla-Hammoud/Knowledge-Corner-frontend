@@ -4,8 +4,9 @@ import NavBar from "./components/NavBar/NavBar";
 import { Route, Routes } from "react-router-dom";
 import AllAuthors from "./components/AllAuthors/AllAuthors";
 import AllBooks from "./components/AllBooks/AllBooks";
-import SingleBook from "./pages/SingleBook/SingleBook";
-import SingleAuther from "./pages/SingleAuther/SingleAuther";
+import Footer from "./components/Footer/Footer";
+//import SingleBook from "./pages/SingleBook/SingleBook";
+//import SingleAuther from "./pages/SingleAuther/SingleAuther";
 function App() {
   return (
     <div className="App">
@@ -15,6 +16,7 @@ function App() {
           <Route path="/AllBooks" element={<AllBooks />}></Route> 
         <Route path="/AllAuthors" element={<AllAuthors />}></Route>
       </Routes>
+      <Footer />
     </div>
   );
 }
