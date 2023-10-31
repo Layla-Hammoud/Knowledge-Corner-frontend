@@ -1,10 +1,12 @@
 import React from "react";
 import NavBar from "./components/NavBar/NavBar";
+import AddBookForm from "./pages/AddBookForm/AddBookForm";
 // we have to import pages component in order to work in route
 import { Route, Routes } from "react-router-dom";
 import AllAuthors from "./pages/Home/AllAuthors";
 import SingleBook from "./pages/SingleBook/SingleBook";
 import SingleAuther from "./pages/SingleAuther/SingleAuther";
+import AddAuther from "./pages/AddAutherForm/AddAutherForm";
 function App() {
   return (
     <div className="App">
@@ -12,7 +14,7 @@ function App() {
       <Routes>
         {/* <Route path="/" element={<Hom />}>
           <Route path="/AllBooks" element={<AllBooks />}></Route> */}
-        <Route path="/AllAuthors" element={<AllAuthors />}></Route>
+        <Route path="/AllAuthors" element={<AddAuther />}></Route>
       </Routes>
     </div>
   );
