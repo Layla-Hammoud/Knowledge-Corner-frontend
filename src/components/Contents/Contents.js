@@ -58,7 +58,7 @@ function Contents() {
 
             </div>
 
-            <h1>About Us</h1>
+            <h1 className={contentsStyle.abouttt}>About Us</h1>
             <p>"Welcome to Sapiens ,  your digital gateway to a world of knowledge and imagination. At Sapiens ,  we're passionate about the written word and its power to inspire, educate, and entertain. Our mission is to make the literary universe accessible to everyone, whether you're an avid reader, a student, or someone looking to explore new literary adventures.</p>
 
         </div>
