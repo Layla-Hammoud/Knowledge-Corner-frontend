@@ -1,7 +1,7 @@
 import React from 'react'
-import adminAllBooksStyle from '../Admin/adminAllBooks.module.css'
-import x from '../../assets/icons/862px-Delete-button 1.svg'
-import update from '../../assets/icons/Vector (4).svg'
+import adminAllBooksStyle from './adminAllBooks.module.css'
+import x from '../../../assets/icons/862px-Delete-button 1.svg'
+import update from '../../../assets/icons/Vector (4).svg'
 
 
 function adminAllAuthors() {
