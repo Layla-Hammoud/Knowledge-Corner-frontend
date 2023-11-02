@@ -8,11 +8,6 @@ import { Link } from "react-router-dom";
 
 function adminNavbar() {
 
-    const openNewWindow = () => {
-        const url = "/addCategory.js";
-        window.open(url, "_blank", "width=600,height=400");
-    };
-
     return (
         <div className={adminNavbarStyle.navbarComponent}>
 
@@ -47,8 +42,8 @@ function adminNavbar() {
                     <Link to={"/dashboard/adminAddBook"} className={adminNavbarStyle.addMVC}>Add Book</Link>
                 </button>
 
-                <button className={adminNavbarStyle.addButton} id="openWindowButton" onClick={openNewWindow}>
-                <Link to={"/dashboard/adminAddBook"} className={adminNavbarStyle.addMVC}>Add Category</Link>
+                <button className={adminNavbarStyle.addButton}>
+                <Link to={"/dashboard/adminAddCategory"} className={adminNavbarStyle.addMVC}>Add Category</Link>
                 </button>
 
             </div>
