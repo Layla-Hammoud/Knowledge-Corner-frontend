@@ -2,29 +2,41 @@
   min-height: 8vh;
   margin: 4%;
   display: grid;
-  grid-template-columns: 20% 80%;
-  column-gap: 0%;
+  grid-template-columns: 15% 85%;
+  column-gap: 1%;
 }
 .bookSearch {
   margin: 25px auto;
+}
+strong {
+  font-size: 13px;
+  /* height: 47px; */
+  padding: 15px;
+  display: block;
+  font-family: cursive;
+  opacity: 0.9;
+  padding-bottom: 5px;
 }
 .booksCategory {
   /* background-color: bisque; */
 }
 .booksList {
-  /* background-color: aquamarine; */
   display: grid;
-  grid-template-columns: repeat(4, 1fr);
+  grid-template-columns: repeat(5, 1fr);
   justify-items: center;
+  text-align: center;
+  column-gap: 0px;
 }
 
 /* Book card */
 .figure {
+  padding: 20px;
   height: 440px;
+  width: 14vw;
 }
 .image {
-  width: 140px;
-  height: 225px;
+  width: 194px;
+  height: 290px;
 }
 .figcaption {
   width: 1fr;
@@ -33,6 +45,7 @@
   flex-direction: column;
   align-items: center;
   justify-content: center;
+  height: 5rem;
 }
 .figcaption > p {
   margin: 5px 0;
@@ -52,39 +65,68 @@
   height: 20px;
   text-align: center;
   cursor: pointer;
+  position: absolute;
+  right: 0;
+  border-radius: 10px;
+  background-color: white;
+  color: #03151e;
+  top: 10px;
+  border: 1px solid #03151e;
+  /* width: 100px; */
+  width: 20px;
+  height: 20px;
+
+  text-align: center;
+  cursor: pointer;
+  right: 15%;
 }
-.searchButton:hover {
-  background-color: #03151e;
-  color: white;
-  border: none;
-}
+/* .searchButton:hover {
+  right: 0;
+  border-radius: 10px;
+  background-color: white;
+  color: #03151e;
+  top: 10px;
+  border: 1px solid #03151e;
+  /* width: 100px; */
 
 .inputSearch {
-  width: 30%;
-  margin-right: 29px;
+  width: 100%;
+  position: absolute;
+  /* margin-right: 29px; */
+  border: none;
+  padding: 10px 0;
+  border-bottom: 1px solid black;
+  top: 0;
+  left: 0;
 }
 .bookSearch {
-  margin: 41px;
-  display: flex;
-  justify-content: center;
+  width: 50%;
+  position: relative;
+  height: 40px;
+  margin: 0 auto;
 }
 /* category filed */
 .booksCategory h2 {
-  font-size: 14px;
+  font-size: 22px;
   padding: 10px;
 }
 .bookCheckbox {
+  /* display: block; */
+  /* line-height: 20px; */
+  font-size: 18px;
+  line-height: 29px;
+  margin-left: 37px;
   display: flex;
-  align-items: center;
-  line-height: 20px;
 }
 .bookCheckbox input {
-  margin-right: 5px;
+  margin-right: 10px;
 }
 .booksCategory {
   /* display: flex; */
   border: 1px #ccc solid;
   padding: 10px;
+  background-color: #e8f1ee;
+  border-radius: 14px;
 }
 /* filter fildes */
 .filterCategories img {
@@ -179,6 +221,7 @@
   .booksCategory {
     border: 1px black solid;
     padding: 10px;
+    margin: 11px;
   }
   .searchButton {
     border-radius: 0px;
@@ -190,5 +233,9 @@
     height: 20px;
     text-align: center;
     cursor: pointer;
+  }
+  /* book list */
+  .figure {
+    width: 64vw;
   }
 }
