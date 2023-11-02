@@ -26,7 +26,14 @@
     border: 3px solid black;
     border-radius: 15px;
     cursor: pointer;
+    text-decoration: none;
     background-color: white;
+    transition: background-color 0.3s, color 0.3s, transform 0.3s;
+}
+
+.innerDiv:hover{
+    transform: scale(1.05);
+    opacity: 0.5;
 }
 
 .threeButton{
@@ -49,7 +56,10 @@
     justify-content: center;
     align-items: center;
 }
-
+.addMVC{
+    text-decoration: none;
+    color: white;
+}
 .addButton{
     color: white;
     background-color: var(--primary-color);
