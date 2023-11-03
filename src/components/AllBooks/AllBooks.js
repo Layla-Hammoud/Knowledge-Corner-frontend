@@ -5,7 +5,7 @@ import filter from "../../assets/icons/filter.png";
 import axios from "axios";
 import tempBookCard from "../BookCard/tempBookCard";
 import TempBookCard from "../BookCard/tempBookCard";
-
+import magnifire from "../../assets/icons/magnifiree.jpg";
 let rating = 4;
 const AllBooks = () => {
   const [menuOpen, setMenuOpen] = useState(false);
@@ -44,7 +44,7 @@ const AllBooks = () => {
         const authorMap = {};
         // console.log(res.data)
         res.data.forEach((author) => {
-          authorMap[author._id] = author.firstName;
+          authorMap[author._id] = author.firstName + " " + author.lastName;
           // console.log(author.firstName)
         });
         setAuthors(authorMap);
@@ -63,7 +63,7 @@ const AllBooks = () => {
           placeholder="Search For Books"
         />
         <button for="#search" className={AllBooksStyle.searchButton}>
-          search
+          <img src={magnifire} alt="search img" width="25" height="20" />
         </button>
       </form>
 
