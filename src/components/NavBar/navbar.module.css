@@ -10,7 +10,7 @@
 .navContainer {
   width: auto;
   height: 64.581px;
-  margin: 0 20px 0 20px;
+  /* margin: 0 20px 0 20px; */
 }
 
 .navBar {
@@ -48,7 +48,7 @@
 .navUl {
   display: flex;
   align-items: center;
-  justify-content: center;
+  justify-content: flex-start;
   width: 779px;
   height: 64.581px;
 }

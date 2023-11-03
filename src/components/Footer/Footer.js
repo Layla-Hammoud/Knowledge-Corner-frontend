@@ -5,6 +5,9 @@ import facebook from '../../assets/icons/Vector.svg'
 import twitter from '../../assets/icons/Vector (1).svg'
 import instagram from '../../assets/icons/Vector (2).svg'
 import youtube from '../../assets/icons/Vector (3).svg'
+import telephone from '../../assets/icons/telephone.png'
+import location from '../../assets/icons/location.png'
+import { Link } from 'react-router-dom'
 
 
 const Footer = () => {
@@ -20,9 +23,9 @@ const Footer = () => {
                 <div className={footerStyle.menuListContainer}>
                     <ul>
                         <h1>Platform</h1>
-                        <li>Home</li>
-                        <li>All Books</li>
-                        <li>All Authors</li>
+                        <li><Link to={"/"}>Home</Link></li>
+                        <li><Link to={"./AllBooks"}>All Books</Link></li>
+                        <li><Link to={"./AllAuthors"}>All Authors</Link></li>
                     </ul>
 
                     <ul>
@@ -34,8 +37,8 @@ const Footer = () => {
 
                     <ul>
                         <h1>Contact</h1>
-                        <li>+961 70 178 056</li>
-                        <li>Tripoli , Lebanon</li>
+                        <li><img src={telephone} alt='phone number' className={footerStyle.phoneImage}/><span>+961 70 178 056</span></li>
+                        <li><img src={location} alt='location' className={footerStyle.phoneImage}/><span>Tripoli , Lebanon</span></li>
                     </ul>
                 </div>
 

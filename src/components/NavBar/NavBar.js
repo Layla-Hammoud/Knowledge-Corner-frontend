@@ -32,7 +32,7 @@ const NavBar = () => {
     <div className={navBarStyle.navContainer}>
       <nav className={navBarStyle.navBar}>
         <div className={navBarStyle.logoContainer}>
-          <Link to={"/"}>
+          <Link to="/">
             <img
               className={navBarStyle.navImg}
               src={isResponsive ? Icone : Icon}

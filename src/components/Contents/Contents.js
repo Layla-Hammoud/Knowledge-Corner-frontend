@@ -1,68 +1,91 @@
-import React from 'react'
+import React, { useState, useEffect } from 'react'
 import contentsStyle from '../Contents/contents.module.css'
-import image1 from '../../assets/images/image 24.svg'
-import image2 from '../../assets/images/image 24 (1).svg'
-import image3 from '../../assets/images/image 24 (2).svg'
-import image4 from '../../assets/images/image 24 (3).svg'
-import image5 from '../../assets/icons/satisfaction (1) 2.svg'
-import image6 from '../../assets/icons/social-media 2.svg'
-import image7 from '../../assets/icons/online-library 2.svg'
-import image8 from '../../assets/icons/book 2.svg'
-import image9 from '../../assets/icons/authorization 2.svg'
-import image10 from '../../assets/icons/checklist 2.svg'
+import image5 from '../../assets/icons/satisfaction (4).png'
+import image6 from '../../assets/icons/good (1).png'
+import image7 from '../../assets/icons/online-library (1).png'
+import image8 from '../../assets/icons/digital-library.png'
+import image9 from '../../assets/icons/key-person.png'
+import image10 from '../../assets/icons/library.png'
+import axios from 'axios';
+
 
 function Contents() {
+    const [book, setBook] = useState([]);
+
+    useEffect(() => {
+        async function fetchData() {
+            try {
+                const response = await axios.get('http://localhost:4000/api/books/');
+                // console.log(response.data);
+                setBook(response.data.slice(0, 4))
+            } catch (error) {
+                console.error('Error:', error);
+            }
+        }
+
+        fetchData(); // Call the fetchData function here
+    }, []);
+
     return (
         <div className={contentsStyle.contentsComponent}>
 
             <h1>Millions of Books Available for you , Anytime & Anywhere</h1>
             <div className={contentsStyle.imageContainer}>
-                <img src={image1} alt='image1' />
-                <img src={image2} alt='image2' />
-                <img src={image3} alt='image3' />
-                <img src={image4} alt='image4' />
+
+                {book.map((item, id) => (
+                    <div key={id} className={contentsStyle.bookContainer}>
+                        <button className={contentsStyle.imageButton}>
+                            <img src={`http://localhost:4000/${item.image}`} alt={item.image} className={contentsStyle.imageBook} />
+                        </button>
+                        <h4 className={contentsStyle.titleBook}>{item.title}</h4>
+                    </div>
+                ))}
+
             </div>
 
             <h1>Services</h1>
             <div className={contentsStyle.borderComponent}>
 
                 <div className={contentsStyle.singleBorder}>
-                    <img src={image5} alt='satisfation'/>
+                    <img src={image5} alt='satisfation' />
                     <h3>User Ratings and reviews</h3>
+                    <p>Discover what other users are saying about our services and share your own experiences.</p>
                 </div>
 
                 <div className={contentsStyle.singleBorder}>
-                    <img src={image6} alt='social-media'/>
+                    <img src={image6} alt='social-media' />
                     <h3>User Recommendations</h3>
+                    <p>Explore personalized recommendations from our community to enhance your experience.</p>
                 </div>
 
                 <div className={contentsStyle.singleBorder}>
-                    <img src={image7} alt='online-library'/>
+                    <img src={image7} alt='online-library' />
                     <h3>Extensive Digital Library</h3>
+                    <p>Gain access to a vast online library with a wealth of digital resources at your fingertips.</p>
                 </div>
 
                 <div className={contentsStyle.singleBorder}>
-                    <img src={image8} alt='book-2'/>
+                    <img src={image8} alt='book-2' />
                     <h3>Educational Resources</h3>
+                    <p>Access a wide range of educational materials and tools to support your learning journey.</p>
                 </div>
 
                 <div className={contentsStyle.singleBorder}>
-                    <img src={image9} alt='authorization'/>
+                    <img src={image9} alt='authorization' />
                     <h3>Author Profiles</h3>
+                    <p>Dive into the profiles of talented authors and get to know the creative minds behind your favorite books.</p>
                 </div>
 
                 <div className={contentsStyle.singleBorder}>
-                    <img src={image10} alt='check-list'/>
+                    <img src={image10} alt='check-list' />
                     <h3>Reading Lists</h3>
+                    <p>Create and explore reading lists to help you organize and discover new books tailored to your interests.</p>
                 </div>
 
             </div>
 
-            <h1 className={contentsStyle.abouttt}>About Us</h1>
-            <p>"Welcome to Sapiens ,  your digital gateway to a world of knowledge and imagination. At Sapiens ,  we're passionate about the written word and its power to inspire, educate, and entertain. Our mission is to make the literary universe accessible to everyone, whether you're an avid reader, a student, or someone looking to explore new literary adventures.</p>
-
         </div>
-        
+
     )
 }
 

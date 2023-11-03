@@ -1,21 +1,19 @@
 .heroSectionComponent{
     color: #03151E;
     display: flex;
-    justify-content: space-around;
+    justify-content: center;
     align-items: center;
+    margin: 10px auto;
     color: var(--text-color);
     width: var(--container-width);
-    margin: 0 auto;
     line-height: var(--line-height);
     font-size: var(--font-size);
-    margin-bottom: 15px;
 }
 
 .libraryIntro{
     display: flex;
     flex-direction: column;
     row-gap: 70px;
-    width: 25%;
 }
 
 .libraryIntro > p:first-child{
@@ -23,55 +21,96 @@
 }
 
 .heroImage{
-    width: 45%;
+    width: 100%;
+    
+}
+
+.heroPara{
+  font-size: 20px;
+  padding: 10px;
+  width: 70%;
+  border-left: 1px solid rgb(209, 205, 205);
+  border-bottom: 1px solid rgb(209, 205, 205);
+  border-radius: 5px;
 }
 
 .exploreButton {
     background-color: #03151E; 
     color: #fff; 
-    padding: 10px; /* Padding for the button */
+    text-align: center;
+    padding: 20px;
     border: none; 
+    text-decoration: none;
     border-radius: var(--border-radius); 
     font-size: 1.5rem; 
-    width: 220px;
-    height: 70px;
+    width: fit-content;
     cursor: pointer; 
-    transition: background-color 0.3s, color 0.3s; /* Add a smooth color transition on hover */
+    transition: background-color 0.3s, color 0.3s, transform 0.3s;
   }
   
   .exploreButton:hover {
-    background-color: #fff; 
-    color: #03151E;
+    transform: scale(1.05);
+    opacity: 0.5;
   }
 
 
 
   @media (max-width: 1100px) {
     .heroSectionComponent {
-      flex-direction: column; /* Stack content vertically */
-      align-items: center; /* Center items vertically */
-      /* background-color: red; */
-      text-align: center;
+      margin: 30px auto;
     }
   
     .libraryIntro {
-      width: 100%; /* Full width for smaller screens */
-      row-gap: 0px;
+      width: 100%; 
+      row-gap: 40px;
     }
 
-    .libraryIntro > p{
-      margin: 5px;
+    .libraryIntro > p:first-child{
+      text-align: center;
     }
   
     .heroImage {
       display: none; /* Hide the image for smaller screens */
     }
+
+    .heroPara{
+      width: 100%;
+    }
   
     .exploreButton {
-      width: 35%; 
       font-size: 1.2rem;
       margin: 0 auto;
-      margin-top: 15px;
     }
   }
+
+  @media (max-width:700px){
+
+    .libraryIntro > p:first-child{
+      font-size: 30px;
+    }
+
+    .exploreButton{
+      padding: 10px;
+    }
+  }
+
+  @media (max-width:600px){
+    .heroPara{
+      font-size: 15px;
+    }
+    .libraryIntro{
+      row-gap: 10px;
+    }
+  }
+
+  @media (max-width:400px){
+    .libraryIntro > p:first-child{
+      font-size: 22px;
+    }
+    .exploreButton{
+      padding: 6px;
+    }
+  }
+
+
   
