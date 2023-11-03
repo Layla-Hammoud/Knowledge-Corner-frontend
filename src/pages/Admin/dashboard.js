@@ -4,8 +4,8 @@ import AdminAllBooks from './AdminRead/adminAllBooks'
 import { Route, Routes } from "react-router-dom";
 import AdminAllAuthors from './AdminRead/adminAllAuthors'
 import AdminAllCategories from './AdminRead/adminAllCategories';
-import AddBookForm from '../AddBookForm/AddBookForm'
-import AddAuthorForm from '../AddAutherForm/AddAutherForm'
+import AddBookForm from '../AddEditBookForm/AddEditBookForm'
+import AddAuthorForm from '../AddEditAutherForm/AddEditAutherForm'
 import AddCategoryForm from './addCategory'
 import AdminOutlet from '../../Outlet/AdminOutlet';
 import NotFound from '../../components/NotFound/AdminNotFound'

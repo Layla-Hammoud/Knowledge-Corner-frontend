@@ -1,6 +1,6 @@
 import BookCard from "../../components/BookCard/BookCard";
 import BookCover from "../../assets/images/james-clear-headshot-v1-e1538685972972.jpg";
-import style from "../../SharedStyle.module.css";
+import style from "./SingleAuthor.module.css";
 import Stars from "../../components/Stars/Stars";
 function SingleAuther() {
   let rating = 2;

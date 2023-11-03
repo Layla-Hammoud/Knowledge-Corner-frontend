@@ -1,6 +1,6 @@
 import BookCard from "../../components/BookCard/BookCard";
 import BookCover from "../../assets/images/bookcover.jpg";
-import style from '../../SharedStyle.module.css'
+import style from './SingleBook.module.css'
 import Stars from "../../components/Stars/Stars";
 function SingleBook() {
   let rating=3;
