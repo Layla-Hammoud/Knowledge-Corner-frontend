@@ -1,8 +1,8 @@
 import React from "react";
 import AllBooksStyle from "../../components/AllBooks/AllBooks.module.css";
 
-export default function TempBookCard(props) {
-  const { bookTitle, image, author, rating } = props;
+function TemAuthorCard(props) {
+  const { authorName, image, rating } = props;
   // console.log(authorId)
   return (
     <figure className={AllBooksStyle.figure}>
@@ -12,10 +12,7 @@ export default function TempBookCard(props) {
         className={AllBooksStyle.image}
       />
       <figcaption className={AllBooksStyle.figcaption}>
-        <p>
-          <strong>{bookTitle}</strong>
-        </p>
-        <p> {author}</p>
+        <p> {authorName}</p>
         <div>
           {[1, 2, 3, 4, 5].map((star) => (
             <span
@@ -30,3 +27,4 @@ export default function TempBookCard(props) {
     </figure>
   );
 }
+export default TemAuthorCard;
