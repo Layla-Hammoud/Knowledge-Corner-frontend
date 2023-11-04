@@ -12,7 +12,7 @@ const NavBar = () => {
 
   const handleSearch = () => {
     setMenuOpenn(!menuOpenn);
-    console.log("clicked") // Toggle the menuOpen state
+    console.log("clicked"); // Toggle the menuOpen state
   };
 
   useEffect(() => {
@@ -51,7 +51,9 @@ const NavBar = () => {
         </div>
 
         <ul
-          className={`${navBarStyle.navUl} ${menuOpenn ? navBarStyle.open : ""}`}
+          className={`${navBarStyle.navUl} ${
+            menuOpenn ? navBarStyle.open : ""
+          }`}
         >
           <li>
             <NavLink
@@ -96,6 +98,7 @@ const NavBar = () => {
             </NavLink>
           </li>
         </ul>
+        <button className={navBarStyle.loginBtnNav}> Log In</button>
       </nav>
     </div>
   );
