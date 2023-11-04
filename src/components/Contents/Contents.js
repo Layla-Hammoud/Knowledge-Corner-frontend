@@ -35,7 +35,7 @@ function Contents() {
             <Link to={'/SingleBook'}>
               <button className={contentsStyle.imageButton}>
                 <img
-                  src={`http://localhost:4000/${item.image}`}
+                  src={`http://localhost:4000/images/${item.image}`}
                   alt={item.image}
                   className={contentsStyle.imageBook}
                 />

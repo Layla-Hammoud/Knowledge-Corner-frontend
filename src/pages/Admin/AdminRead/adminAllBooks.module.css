@@ -6,63 +6,63 @@
     align-items: center;
 }
 
-/* table{
-    margin: 0 auto;
-} */
+
+
+table{
+    margin: 5px;
+}
 
 tr > th{
     background-color: #F5F5F5;
     text-align: center;
     padding: 20px;
     font-size: 15px;
-    width: 200px;
-    height: 60px;
-    /* border-bottom: 1px solid rgb(199, 195, 195); */
 }
+
+
 
 tr > td{
     text-align: center;
-    padding: 20px;
     font-size: 15px;
-    width: 200px;
-    height: 60px;
     border-bottom: 1px solid rgb(199, 195, 195);
 }
 
 .buttonContainer{
     display: flex;
     flex-direction: column;
-    row-gap: 20px;
+    row-gap: 10px;
 }
 
 .updateDelete{
     border: none;
     cursor: pointer;
-    padding: 10px;
-    height: 50px;
+    width: fit-content;
 }
 
 @media only screen and (max-width: 600px){
 
     table{
         display: flex;
+        flex-direction: column;
         justify-content: center;
         align-items: center;
     }
 
     thead > tr {
         display: flex;
-        flex-direction: column;
+        flex-direction: row;
         justify-content: center;
         align-items: center;
     }
 
     tbody > tr {
         display: flex;
-        flex-direction: column;
+        flex-direction: row;
         justify-content: center;
         align-items: center;
     }
+
+    
 
     th, td {
         padding: 4px 8px; 

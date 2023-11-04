@@ -3,13 +3,14 @@ import AdminNavbar from '../pages/Admin/AdminNavbar/adminNavbar';
 
 import { Outlet } from "react-router-dom";
 
-function Test() {
+function AdminOutlet({handleClick}) {
+    
     return (
         <div>
-            <AdminNavbar/>
+            <AdminNavbar handleClick={handleClick}/>
             <Outlet />
         </div>
     )
 }
 
-export default Test
+export default AdminOutlet
