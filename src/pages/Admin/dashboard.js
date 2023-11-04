@@ -4,9 +4,9 @@ import AdminAllBooks from './AdminRead/adminAllBooks'
 import { Route, Routes } from "react-router-dom";
 import AdminAllAuthors from './AdminRead/adminAllAuthors'
 import AdminAllCategories from './AdminRead/adminAllCategories';
-import AddBookForm from '../AddBookForm/AddBookForm'
-import AddAuthorForm from '../AddAutherForm/AddAutherForm'
-import AddCategoryForm from './addCategory'
+import AddEditBookForm from '../AddEditBookForm/AddEditBookForm';
+import AddEditAutherForm from '../AddEditAutherForm/AddEditAutherForm';
+import AddCategoryForm from './addCategory';
 import AdminOutlet from '../../Outlet/AdminOutlet';
 import NotFound from '../../components/NotFound/AdminNotFound'
 
@@ -21,8 +21,8 @@ function dashboard() {
           <Route path='/adminAllBooks' element={<AdminAllBooks/>}></Route>
           <Route path='/adminAllAuthors' element={<AdminAllAuthors/>}></Route>
           <Route path='/adminAllCategories' element={<AdminAllCategories/>}></Route>
-          <Route path='/adminAddBook' element={<AddBookForm/>}></Route>
-          <Route path='/adminAddAuthor' element={<AddAuthorForm/>}></Route>
+          <Route path='/adminAddBook' element={<AddEditBookForm/>}></Route>
+          <Route path='/adminAddAuthor' element={<AddEditAutherForm/>}></Route>
           <Route path='/adminAddCategory' element={<AddCategoryForm/>}></Route>
         </Route>
 
