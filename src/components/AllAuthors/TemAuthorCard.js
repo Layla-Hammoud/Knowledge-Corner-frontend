@@ -7,7 +7,7 @@ function TemAuthorCard(props) {
   return (
     <figure className={AllBooksStyle.figure}>
       <img
-        src={`http://localhost:4000/${image}`}
+        src={`http://localhost:4000/images/${image}`}
         alt="Book cover"
         className={AllBooksStyle.image}
       />
