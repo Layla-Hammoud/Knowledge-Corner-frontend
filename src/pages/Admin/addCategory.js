@@ -6,7 +6,7 @@ function addCategory() {
         <div className={addCategoryStyle.addCategoryComponent}>
             <h1>Add</h1>
 
-            <form>
+            <form className={addCategoryStyle.formCategory}>
                 <label for="categoryName">Category's name</label>
                 <input type="text" id="categoryName" name="Name" placeholder='Enter Category name' required />
 

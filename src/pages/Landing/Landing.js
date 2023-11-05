@@ -6,7 +6,7 @@ function Landing() {
     return (
         <div>
             <HeroSection />
-            <Content />
+            <Content/>
         </div>
     )
 }
