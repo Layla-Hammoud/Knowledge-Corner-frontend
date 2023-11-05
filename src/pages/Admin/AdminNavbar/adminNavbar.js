@@ -6,27 +6,29 @@ import categories from '../../../assets/icons/Category.svg'
 import { Link } from "react-router-dom";
 
 
-function adminNavbar() {
+function adminNavbar({handleClick}) {
 
     return (
         <div className={adminNavbarStyle.navbarComponent}>
 
             <div className={adminNavbarStyle.outerDiv}>
 
+                <div onClick={handleClick}>
                 <Link to={"/dashboard/adminAllBooks"} className={adminNavbarStyle.innerDiv}>
                     <img src={books} alt='books' />
-                    <Link to={"/dashboard/adminAllBooks"} className={adminNavbarStyle.threeButton}>Books</Link>
+                    <p className={adminNavbarStyle.threeButton}>Books</p>
                 </Link>
+                </div>
 
                 <Link to={"/dashboard/adminAllAuthors"} className={adminNavbarStyle.innerDiv}>
                     <img src={authors} alt='authors' />
-                    <Link to="/dashboard/adminAllAuthors" className={adminNavbarStyle.threeButton}>Authors</Link>
+                    <p className={adminNavbarStyle.threeButton}>Authors</p>
                 </Link>
                 
 
                 <Link to={"/dashboard/adminAllCategories"} className={adminNavbarStyle.innerDiv}>
-                    <img src={categories} alt='categories' />
-                    <Link to={"/dashboard/adminAllCategories"} className={adminNavbarStyle.threeButton}>Categories</Link>
+                    <img src={categories} alt='categories'/>
+                    <p className={adminNavbarStyle.threeButton}>Categories</p>
                 </Link>
 
             </div>
