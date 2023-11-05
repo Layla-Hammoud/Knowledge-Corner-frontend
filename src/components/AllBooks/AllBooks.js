@@ -1,12 +1,10 @@
 import React, { useState, useEffect } from "react";
 import AllBooksStyle from "./AllBooks.module.css";
-import BookCover from "../../assets/images/bookcover.jpg";
 import filter from "../../assets/icons/filter.png";
 import axios from "axios";
-import tempBookCard from "../BookCard/tempBookCard";
+import magnifire from "../../assets/icons/magnifire.jpeg";
 import TempBookCard from "../BookCard/tempBookCard";
 
-let rating = 4;
 const AllBooks = () => {
   const [menuOpen, setMenuOpen] = useState(false);
 
@@ -63,7 +61,7 @@ const AllBooks = () => {
           placeholder="Search For Books"
         />
         <button for="#search" className={AllBooksStyle.searchButton}>
-          search
+          <img src={magnifire} alt="search img" width="25" height="20" />
         </button>
       </form>
 
@@ -128,37 +126,8 @@ const AllBooks = () => {
               image={book.image}
               author={authors[book.authorId]}
               bookTitle={book.title}
+              rating={book.rating}
             />
-            // <figure className={AllBooksStyle.figure} key={id}>
-            //   <img
-            //     src={`http://localhost:4000/${book.image}`}
-            //     alt="Book cover"
-            //     className={AllBooksStyle.image}
-            //   />
-            //   <figcaption className={AllBooksStyle.figcaption}>
-            //     <p>
-            //       <strong>{book.title}</strong>
-            //     </p>
-            //     <p>
-            //       {" "}
-            //       {authors[book.authorId]
-            //         ? authors[book.authorId]
-            //         : "Author Name Not Found"}
-            //     </p>
-            //     <div>
-            //       {[1, 2, 3, 4, 5].map((star) => (
-            //         <span
-            //           key={star}
-            //           className={`${
-            //             book.rating >= star ? AllBooksStyle.filled : ""
-            //           }`}
-            //         >
-            //           &#9733;
-            //         </span>
-            //       ))}
-            //     </div>
-            //   </figcaption>
-            // </figure>
           ))}
         </div>
       </div>
