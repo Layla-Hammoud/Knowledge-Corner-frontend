@@ -14,42 +14,25 @@ import axios from 'axios';
 function Dashboard() {
 
   const [books,setBooks]=useState([])
+  const [authors,setAuthors]=useState([])
+  const [categories,setCategories]=useState([])
 
-  const handleClick=async()=>{
-    try{
-      const response= await axios.get("http://localhost:4000/api/books")
-      // console.log(response.data)
-      setBooks(response.data)
-      // console.log(books)
-    }
-    catch(error){
-      console.log(error)
-    }
-  }
+  const handleClick = async () => {
+    try {
+      const [booksResponse, authorsResponse,categoriesResponse] = await Promise.all([
+        axios.get('http://localhost:4000/api/books'),
+        axios.get('http://localhost:4000/api/authors'),
+        axios.get('http://localhost:4000/api/categories')
+      ]);
 
-  // const handleClick=async()=>{
-  //   try{
-  //     const response= await axios.get("http://localhost:4000/api/books")
-
-  //     const booksWithAuthorNames = await Promise.all(
-  //       response.data.map(async (book) => {
-  //         // Make a separate API request to fetch the author's name
-  //         const authorResponse = await axios.get(`http://localhost:4000/api/authors/${book.authorId}`);
-  //         const authorName = authorResponse.data.firstName;
-  //         return { ...book, authorName };
-  //       })
-  //     );
-      
-  //     setBooks(booksWithAuthorNames)
-  //     console.log(books)
+      setBooks(booksResponse.data);
+      setAuthors(authorsResponse.data);
+      setCategories(categoriesResponse.data);
     
-  //   }
-  //   catch(error){
-  //     console.log(error)
-  //   }
-  // }
-
-
+    } catch (error) {
+      console.error('Error:', error);
+    }
+  };
 
   useEffect(()=>{
     handleClick()
@@ -62,10 +45,10 @@ function Dashboard() {
       <Routes>
 
         <Route exact path='/' element={<AdminOutlet handleClick={handleClick}/>}>
-          <Route exact path='/' element={<AdminAllBooks books={books}/>}></Route>
-          <Route path='/adminAllBooks' element={<AdminAllBooks books={books}/>}></Route>
-          <Route path='/adminAllAuthors' element={<AdminAllAuthors/>}></Route>
-          <Route path='/adminAllCategories' element={<AdminAllCategories/>}></Route>
+          <Route exact path='/' element={<AdminAllBooks books={books} authors={authors} categories={categories}/>}></Route>
+          <Route path='/adminAllBooks' element={<AdminAllBooks books={books} authors={authors} categories={categories}/>}></Route>
+          <Route path='/adminAllAuthors' element={<AdminAllAuthors authors={authors}/>}></Route>
+          <Route path='/adminAllCategories' element={<AdminAllCategories categories={categories}/>}></Route>
           <Route path='/adminAddBook' element={<AddBookForm/>}></Route>
           <Route path='/adminAddAuthor' element={<AddAuthorForm/>}></Route>
           <Route path='/adminAddCategory' element={<AddCategoryForm/>}></Route>
