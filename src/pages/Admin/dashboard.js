@@ -1,7 +1,8 @@
 import React ,{useEffect, useState} from 'react'
 // import AdminNavbar from './AdminNavbar/adminNavbar'
-import AdminAllBooks from './AdminRead/adminAllBooks'
+import AdminAllBooks from "./AdminRead/adminAllBooks";
 import { Route, Routes } from "react-router-dom";
+
 import AdminAllAuthors from './AdminRead/adminAllAuthors'
 import AdminAllCategories from './AdminRead/adminAllCategories';
 import AddBookForm from '../AddEditBookForm/AddEditBookForm'
@@ -54,13 +55,10 @@ function Dashboard() {
           <Route path='/adminAddCategory' element={<AddCategoryForm/>}></Route>
         </Route>
 
-        <Route path='/*' element={<NotFound/>}/>
-
+        <Route path="/*" element={<NotFound />} />
       </Routes>
-
     </div>
-
-  )
+  );
 }
 
 export default Dashboard
