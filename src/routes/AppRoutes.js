@@ -7,6 +7,7 @@ import Landing from "../pages/Landing/Landing";
 import Dashboard from '../pages/Admin/dashboard'
 import UserOutlet from "../Outlet/userOutlet";
 import NotFound from '../components/NotFound/WebsiteNotFound'
+import AboutUs from '../pages/AboutUs/AboutUs';
 
 function AppRoutes() {
   return (
@@ -17,6 +18,7 @@ function AppRoutes() {
           <Route path="/AllBooks" element={<AllBooks />}></Route> 
           <Route path="/AllAuthors" element={<AllAuthors />}></Route>
           <Route path="/SingleBook" element={<SingleBook/>}></Route>
+          <Route path='/AboutUs' element={<AboutUs/>}></Route>
         </Route>
 
         <Route path="/dashboard/*" element={<Dashboard/>}></Route>
