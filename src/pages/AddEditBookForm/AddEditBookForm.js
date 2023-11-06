@@ -1,7 +1,59 @@
 import style from "./AddEditBookForm.module.css";
 import { useState, useEffect } from "react";
+import { toast, ToastContainer } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 import axios from "axios";
-function AddEditBookForm({ type, book }) {
+function AddEditBookForm() {
+  const book = {
+    _id: "654633ffa99dfeb67c7e209f",
+    title: "How Successful People Think",
+    ISBN: "9999999",
+    publicationDate: "1987-02-26T22:00:00.000Z",
+    description:
+      "Good thinkers are always in demand. A person who knows how may always have a job, but the person who knows why will always be his boss.",
+    nbPages: 154,
+    authorId: "6533ca8d1a5b8a0179bd89af",
+    categoryId: "65362be092ebe34bdbce518a",
+    image: "image-1699099647757-263737856.jpg",
+    language: "Arabic",
+    rating: 4,
+    createdAt: "2023-11-04T12:07:27.781Z",
+    updatedAt: "2023-11-04T12:07:27.781Z",
+    __v: 0,
+  };
+  const type = "Add";
+  const handleSuccessAlert = () => {
+    const message = type === 'Add'? 'The book is added' :  'The book is edited'
+    toast.success(message, {
+      position: "top-right",
+      autoClose: 3000,
+      hideProgressBar: false,
+      closeOnClick: true,
+      pauseOnHover: true,
+      draggable: true,
+    });
+  };
+  const handleErrorAlert = (errorMessage) => {
+    toast.error(errorMessage, {
+      position: "top-right",
+      autoClose: 3000, 
+      hideProgressBar: false,
+      closeOnClick: true,
+      pauseOnHover: true,
+      draggable: true,
+    });
+  };
+  const showWaitingToast = () => {
+    toast("Please wait...", {
+      position: "top-right",
+      autoClose: 100, 
+      hideProgressBar: true, 
+      closeOnClick: false, 
+      pauseOnHover: false, 
+      draggable: false, 
+      className: "custom-waiting-toast"
+    });
+  };
   const [optionCategory, setOptionCategory] = useState(null);
   const [authors, setAuthors] = useState(null);
 
@@ -20,32 +72,43 @@ function AddEditBookForm({ type, book }) {
   const addBook = (e) => {
     e.preventDefault();
     const formData = new FormData(e.target);
-    const formDataObject = {};
-    for (const [name, value] of formData.entries()) {
-      formDataObject[name] = value;
+    const newFormData = new FormData();
+    const imageInput = e.target.querySelector('#imageInput'); 
+    if (imageInput.files.length <= 0) {
+      // Remove the "image" field if no file is selected
+      formData.delete("image");
+    }
+    for (const pair of formData.entries()) {
+      const [key, value] = pair;
+      if (value !== "") {
+        newFormData.append(key, value);
+      }
     }
     if (type === "Add") {
+      showWaitingToast()
       axios
         .post("http://localhost:4000/api/books", formData)
         .then((response) => {
           console.log("Request was successful:", response.data);
+          handleSuccessAlert()
           resetForm();
         })
         .catch((error) => {
           console.error("Error while making the request:", error);
+          handleErrorAlert(error.message)
         });
     } else if (type === "Edit") {
-      const image = formData.get("image");
-      if (image.size === 0) {
-        delete formDataObject.image;
-      }
+      console.log(formData)
+      showWaitingToast()
       axios
-        .patch(`http://localhost:4000/api/books/${book._id}`, formDataObject)
+        .patch(`http://localhost:4000/api/books/${book._id}`, formData)
         .then((response) => {
           console.log("Request was successful:", response.data);
+          handleSuccessAlert()
         })
         .catch((error) => {
           console.error("Error while making the request:", error);
+          handleErrorAlert(error.message)
         });
     }
   };
@@ -77,6 +140,7 @@ function AddEditBookForm({ type, book }) {
   }, []);
   return (
     <>
+    <ToastContainer />
       <div className={style.fromContainer}>
         <form className={style.bookform} id="bookForm" onSubmit={addBook}>
           <h1 className={style.title}>
@@ -200,6 +264,7 @@ function AddEditBookForm({ type, book }) {
               className={style.input}
               type="file"
               name="image"
+              id="imageInput"
               required={type === "Add"}
             />
           </div>

@@ -1,20 +1,57 @@
 import style from "./AddEditAuthor.module.css";
 import axios from "axios";
+import { toast, ToastContainer } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 function AddEditAutherForm() {
   let type = "Add";
-  let Author =     {
-    _id: "65452a3b37a6bf4b5790c80e",
-    firstName: "rayan",
-    lastName: "hammoud",
-    nationality: "Lebanese",
+  let Author = {
+    _id: "6548020acc8eb8ee83c3eb62",
+    firstName: "nahla",
+    lastName: "amir",
+    dob: "2023-10-31T00:00:00.000Z",
     biography: "I am a very good author",
-    rating: "5",
-    image: "images/default-image.png",
-    __v: 0
-};
+    blogLink: "",
+    rating: "4",
+    image: "public/images/image-1699217930732-182439190.png",
+    __v: 0,
+  };
   const resetForm = () => {
     const form = document.getElementById("AuthorForm");
     form.reset();
+  };
+
+  const handleSuccessAlert = () => {
+    const message = type === 'Add'? 'The author is added' :  'The author is edited'
+    toast.success(message, {
+      position: "top-right",
+      autoClose: 3000,
+      hideProgressBar: false,
+      closeOnClick: true,
+      pauseOnHover: true,
+      draggable: true,
+    });
+  };
+  const handleErrorAlert = (errorMessage) => {
+    toast.error(errorMessage, {
+      position: "top-right",
+      autoClose: 3000, 
+      hideProgressBar: false,
+      closeOnClick: true,
+      pauseOnHover: true,
+      draggable: true,
+    });
+  };
+
+  const showWaitingToast = () => {
+    toast("Please wait...", {
+      position: "top-right",
+      autoClose: 100,
+      hideProgressBar: true, 
+      closeOnClick: false, 
+      pauseOnHover: false, 
+      draggable: false, 
+      className: "custom-waiting-toast"
+    });
   };
 
   function formatDate(inputDate) {
@@ -27,39 +64,49 @@ function AddEditAutherForm() {
   const AddEditAuther = (e) => {
     e.preventDefault();
     const formData = new FormData(e.target);
-    const formDataObject = {};
-    for (const [name, value] of formData.entries()) {
-      if (value !== "") formDataObject[name] = value;
+    const newFormData = new FormData();
+    const imageInput = e.target.querySelector('#imageInput'); 
+    if (imageInput.files.length <= 0) {
+      // Remove the "image" field if no file is selected
+      formData.delete("image");
     }
-    const image = formData.get("image");
-    if (image.size === 0) {
-      delete formDataObject.image;
+    for (const pair of formData.entries()) {
+      const [key, value] = pair;
+      if (value !== "") {
+        newFormData.append(key, value);
+      }
     }
     if (type === "Add") {
+      showWaitingToast()
       axios
-        .post("http://localhost:4000/api/authors", formDataObject)
+        .post("http://localhost:4000/api/authors", newFormData)
         .then((response) => {
           console.log("Request was successful:", response.data);
+          handleSuccessAlert()
           resetForm();
         })
         .catch((error) => {
           console.error("Error while making the request:", error);
+          handleErrorAlert(error.message)
         });
     } else if (type === "Edit") {
-      console.log(formDataObject.image)
+      showWaitingToast()
       axios
-        .patch(`http://localhost:4000/api/authors/${Author._id}`, formDataObject)
+        .patch(`http://localhost:4000/api/authors/${Author._id}`, newFormData)
         .then((response) => {
           console.log("Request was successful:", response.data);
+          handleSuccessAlert()
         })
         .catch((error) => {
           console.error("Error while making the request:", error);
+          handleErrorAlert(error.message)
         });
     }
   };
 
   return (
     <>
+    <ToastContainer />
       <div className={style.fromContainer}>
         <form
           className={style.authorForm}
@@ -96,7 +143,9 @@ function AddEditAutherForm() {
             <input
               className={style.input}
               type="date"
-              defaultValue={type === "Edit" && Author.dob ? formatDate(Author.dob) : ""}
+              defaultValue={
+                type === "Edit" && Author.dob ? formatDate(Author.dob) : ""
+              }
               placeholder="Enter the date of birth"
               name="dob"
             />
@@ -155,7 +204,7 @@ function AddEditAutherForm() {
           </div>
           <div className={style.inputContainer}>
             <label className={style.label}>Enter an image of the Author</label>
-            <input className={style.input} type="file" name="image"  />
+            <input className={style.input} type="file" name="image" id="imageInput" />
           </div>
           <div className={style.inputContainer}>
             <label className={style.label}>rating</label>
