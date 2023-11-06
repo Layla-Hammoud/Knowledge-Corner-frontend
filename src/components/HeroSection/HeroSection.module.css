@@ -9,6 +9,11 @@
     line-height: var(--line-height);
     font-size: var(--font-size);
 }
+.active {
+  height: 100%;
+  padding: 10px;
+  border-bottom: 2px solid var(--primary-color);
+}
 
 .libraryIntro{
     display: flex;
