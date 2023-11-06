@@ -5,7 +5,7 @@ import Stars from "../../components/Stars/Stars";
 function SingleAuther() {
   let rating = 2;
   return (
-    <section>
+    <section className={style.singleAuthorContainer}>
       <div className={style.mainInfoContainer}>
         <article className={style.imgContainer}>
           <img className={style.image} src={BookCover} alt="AuthorPhoto" />
@@ -26,30 +26,30 @@ function SingleAuther() {
             remarkable personal and professional transformations.
           </p>
           <p className={style.info}>
-          Birth Date :<strong>November 22, 1983</strong>{" "}
+          Birth Date :<span className={style.spantext}>November 22, 1983</span>{" "}
           </p>
           <p className={style.info}>
-          Born :<strong> Hamilton, Ohio, US</strong>
+          Born :<span className={style.spantext}> Hamilton, Ohio, US</span>
           </p>
           <p className={style.info}>
-          Twitter :<strong>JamesClear</strong>
+          Twitter :<span className={style.spantext}>JamesClear</span>
           </p>
           <p className={style.info}>
-          Website :<strong>http://jamesclear.com</strong>
+          Website :<span className={style.spantext}>http://jamesclear.com</span>
           </p>
           <p className={style.info}>
-          LinkedIn :<strong>JamesClear</strong>
+          LinkedIn :<span className={style.spantext}>JamesClear</span>
           </p>
         </article>
       </div>
       <h4 className={style.suggestedBookTitle}>More of James Clear books</h4>
       <aside className={style.suggestedBook}>
-        <BookCard />
-        <BookCard />
-        <BookCard />
-        <BookCard />
-        <BookCard />
-        <BookCard />
+      <BookCard isSmall={true}/>
+        <BookCard isSmall={true}/>
+        <BookCard isSmall={true}/>
+        <BookCard isSmall={true}/>
+        <BookCard isSmall={true}/>
+        <BookCard isSmall={true}/>
       </aside>
     </section>
   );

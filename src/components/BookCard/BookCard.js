@@ -1,12 +1,16 @@
 import BookCover from "../../assets/images/bookcover.jpg";
 import style from "./BookCard.module.css";
 import Stars from "../Stars/Stars";
-const BookCard = () => {
+const BookCard = ({isSmall}) => {
   let rating = 4;
+  const size = {
+    width: isSmall ? '200px' : '250px',
+    height: isSmall ? '250px' : '350px',
+  };
   return (
     <>
-      <figure className={style.figure}>
-        <img src={BookCover} alt="Book cover" className={style.image} />
+      <figure className={style.figure} >
+        <img src={BookCover} alt="Book cover" className={style.image} style={size}/>
         <figcaption className={style.figcaption}>
           <p>
             <strong>Memory</strong>
