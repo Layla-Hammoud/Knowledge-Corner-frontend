@@ -7,49 +7,133 @@ import TempBookCard from "../BookCard/tempBookCard";
 
 const AllBooks = () => {
   const [menuOpen, setMenuOpen] = useState(false);
-
-  const handleClick = () => {
-    setMenuOpen(!menuOpen);
-    console.log("clicked"); // Toggle the menuOpen state
-  };
-
-  //fetch data get books using axios
   const [books, setBooks] = useState([]);
   const [authors, setAuthors] = useState({});
+  const [categories, setCategories] = useState([]);
+  const [selectedCategories, setSelectedCategories] = useState([]);
+  const [checkboxes, setCheckboxes] = useState({});
+  const [categoriesMap, setCategoriesMap] = useState({});
+  const [searchInput, setSearchInput] = useState("");
 
+  // This function handles the click event for showing/hiding the category filter.
+  const handleClick = () => {
+    setMenuOpen(!menuOpen);
+    console.log("clicked");
+  };
+
+  // Fetch categories and books on component load.
   useEffect(() => {
+    axios
+      .get("http://localhost:4000/api/categories")
+      .then((response) => {
+        setCategories(response.data);
+        const initialCheckboxes = {};
+        response.data.forEach((category) => {
+          initialCheckboxes[category._id] = false;
+        });
+        setCheckboxes(initialCheckboxes);
+      })
+      .catch((error) => {
+        console.error("Error fetching categories:", error);
+      });
+
     axios
       .get("http://localhost:4000/api/books")
       .then((res) => {
-        console.log(res.data);
         setBooks(res.data);
-        // Extract author IDs from books and fetch author names
         const authorIds = res.data.map((book) => book.authorId);
         fetchAuthors(authorIds);
+
+        const categIds = res.data.map((book) => book.categoryId);
+        fetchCategories(categIds);
       })
       .catch((err) => console.log(err));
   }, []);
-  // Function to fetch author names based on authorIds
+
+  // Fetch the name of the authors based on authorID in books.
   const fetchAuthors = (authorIds) => {
-    // Make an API call to fetch author names based on authorIds
-    // Replace 'yourAuthorAPIEndpoint' with the actual endpoint to fetch authors
     axios
       .get("http://localhost:4000/api/authors", {
         params: { authorIds: authorIds },
       })
       .then((res) => {
-        // Create a mapping of authorId to author name
         const authorMap = {};
-        // console.log(res.data)
+
         res.data.forEach((author) => {
-          authorMap[author._id] = author.firstName;
-          // console.log(author.firstName)
+          authorMap[author._id] = `${author.firstName} ${author.lastName}`;
         });
         setAuthors(authorMap);
-        console.log(books);
       })
       .catch((err) => console.log(err));
   };
+
+  // Fetch the category name based on categoryID in books.
+  const fetchCategories = (categIds) => {
+    axios
+      .get("http://localhost:4000/api/categories", {
+        params: { categIds: categIds },
+      })
+      .then((res) => {
+        const categMap = {};
+
+        res.data.forEach((category) => {
+          categMap[category._id] = category.name;
+        });
+        setCategoriesMap(categMap);
+      })
+      .catch((err) => console.log(err));
+  };
+
+  // Handles changes in the category filter checkboxes.
+  const handleOnChange = (e) => {
+    const categoryId = e.target.value;
+    const isChecked = e.target.checked;
+
+    setCheckboxes((prevCheckboxes) => ({
+      ...prevCheckboxes,
+      [categoryId]: isChecked,
+    }));
+
+    if (isChecked) {
+      setSelectedCategories((prevSelected) => [...prevSelected, categoryId]);
+    } else {
+      setSelectedCategories((prevSelected) =>
+        prevSelected.filter((id) => id !== categoryId)
+      );
+    }
+  };
+
+  // Filters books based on selected categories.
+  const filterBooksByCategories = (booksToFilter, selectedCategories) => {
+    if (selectedCategories.length === 0) {
+      return booksToFilter;
+    }
+    return booksToFilter.filter((book) =>
+      selectedCategories.includes(book.categoryId)
+    );
+  };
+
+  const filteredByCategories = filterBooksByCategories(
+    books,
+    selectedCategories
+  );
+
+  // Handles changes in the search input.
+  const handleSearchInputChange = (e) => {
+    setSearchInput(e.target.value);
+  };
+
+  // Filters books by name based on the search input.
+  const filterBooksByName = (booksToFilter, searchInput) => {
+    if (searchInput) {
+      return booksToFilter.filter((book) =>
+        book.title.toLowerCase().includes(searchInput.toLowerCase())
+      );
+    }
+    return booksToFilter;
+  };
+
+  const filteredBooks = filterBooksByName(filteredByCategories, searchInput);
 
   return (
     <div>
@@ -59,8 +143,10 @@ const AllBooks = () => {
           className={AllBooksStyle.inputSearch}
           type="text"
           placeholder="Search For Books"
+          value={searchInput}
+          onChange={handleSearchInputChange}
         />
-        <button for="#search" className={AllBooksStyle.searchButton}>
+        <button type="button" className={AllBooksStyle.searchButton}>
           <img src={magnifire} alt="search img" width="25" height="20" />
         </button>
       </form>
@@ -69,64 +155,45 @@ const AllBooks = () => {
         <input
           type="text"
           id="Categories"
-          name="Categories "
+          name="Categories"
           value="Search for Categories"
         />
         <button for="#Categories" onClick={handleClick}>
           <img src={filter} alt="filter" />
         </button>
       </div>
+
       <div className={AllBooksStyle.booksContainer}>
-        {/* categories fiels */}
         <div
-          className={`${AllBooksStyle.booksCategory} 
-          ${menuOpen ? AllBooksStyle.open : ""}
-          `}
+          className={`${AllBooksStyle.booksCategory} ${
+            menuOpen ? AllBooksStyle.open : ""
+          }`}
         >
           <h2>Categories</h2>
-          <div className={AllBooksStyle.bookCheckbox}>
-            <input
-              type="checkbox"
-              id="fiction"
-              name="fiction "
-              value="fiction"
-            />
-            <label for="Fiction"> Fiction</label>
-
-            <br></br>
-          </div>
-          <div className={AllBooksStyle.bookCheckbox}>
-            <input
-              type="checkbox"
-              id="fiction"
-              name="fiction "
-              value="fiction"
-            />
-            <label for="Horror"> Horror</label>
-
-            <br></br>
-          </div>
-          <div className={AllBooksStyle.bookCheckbox}>
-            <input
-              type="checkbox"
-              id="fiction"
-              name="fiction "
-              value="fiction"
-            />
-            <label for="Drama"> Drama</label>
-
-            <br></br>
-          </div>
+          {categories.map((category, index) => (
+            <div className={AllBooksStyle.bookCheckbox} key={index}>
+              <input
+                type="checkbox"
+                id={category._id}
+                name={category.name}
+                value={category._id}
+                checked={checkboxes[category._id] || false}
+                onChange={handleOnChange}
+              />
+              <label htmlFor={category._id}>{category.name}</label>
+              <br />
+            </div>
+          ))}
         </div>
 
-        {/* book list */}
         <div className={AllBooksStyle.booksList}>
-          {books.map((book) => (
+          {filteredBooks.map((book) => (
             <TempBookCard
               image={book.image}
               author={authors[book.authorId]}
               bookTitle={book.title}
               rating={book.rating}
+              category={categoriesMap[book.categoryId]}
             />
           ))}
         </div>

@@ -32,13 +32,18 @@ const NavBar = () => {
     <div className={navBarStyle.navContainer}>
       <nav className={navBarStyle.navBar}>
         <div className={navBarStyle.logoContainer}>
-          <Link to="/">
+          <NavLink
+            onClick={() => {
+              setActive([true, false, false]);
+            }}
+            to={"./"}
+          >
             <img
               className={navBarStyle.navImg}
               src={isResponsive ? Icone : Icon}
               alt="logo"
             />
-          </Link>
+          </NavLink>
           <h1 className={navBarStyle.navTitle}>Sapiens</h1>
         </div>
         <div
@@ -60,7 +65,6 @@ const NavBar = () => {
               onClick={() => {
                 setActive([true, false, false]);
               }}
-              // activeClassName={navBarStyle.active}
               className={`${navBarStyle.navLi} ${
                 isActive[0] ? navBarStyle.active : ""
               }`}
@@ -74,7 +78,6 @@ const NavBar = () => {
               onClick={() => {
                 setActive([false, true, false]);
               }}
-              // activeClassName={navBarStyle.active}
               className={`${navBarStyle.navLi} ${
                 isActive[1] ? navBarStyle.active : ""
               }`}
@@ -88,7 +91,6 @@ const NavBar = () => {
               onClick={() => {
                 setActive([false, false, true]);
               }}
-              // activeClassName={navBarStyle.active}
               className={`${navBarStyle.navLi} ${
                 isActive[2] ? navBarStyle.active : ""
               }`}
