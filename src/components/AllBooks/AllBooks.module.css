@@ -5,10 +5,11 @@
   grid-template-columns: 15% 85%;
   column-gap: 1%;
 }
+
 .bookSearch {
   margin: 25px auto;
 }
-strong {
+.figcaption p strong {
   font-size: 13px;
   /* height: 47px; */
   padding: 13px;
@@ -54,15 +55,17 @@ strong {
 .searchButton {
   background-color: white;
   color: #03151e;
-  top: 1.5rem;
+  display: flex;
+  top: 1.95rem;
   border: none;
-  /* border-bottom: 5px solid; */
-  width: 33px;
+  width: 0px;
   position: absolute;
-  height: 47px;
+  height: 0px;
   text-align: center;
   cursor: pointer;
   right: 41%;
+  justify-content: center;
+  align-items: center;
 }
 
 .inputSearch {
@@ -88,8 +91,6 @@ strong {
   padding: 10px;
 }
 .bookCheckbox {
-  /* display: block; */
-  /* line-height: 20px; */
   font-size: 18px;
   line-height: 29px;
   margin-left: 2rem;
@@ -147,17 +148,6 @@ strong {
     height: auto;
     background-color: white;
   }
-  /* .bookSearch {
-   
-    width: 64vw;
-    border: none;
-    padding: 10px 0;
-    border-bottom: 1px solid black;
-    text-align: left;
-    position: relative;
-    font-size: 12px;
-  } */
-
   .filterCategories input {
     border: none;
     text-align: center;
