@@ -18,6 +18,33 @@ function Dashboard() {
   const [authors,setAuthors]=useState([])
   const [categories,setCategories]=useState([])
 
+  const handleDeleteBook=(bookId)=>{
+    axios.delete(`http://localhost:4000/api/books/${bookId}`)
+    .then((response) =>{
+      console.log('Book deleted successfully')
+      // Filter the books to exclude the deleted book
+      const updatedBooks = books.filter((book) => book._id !== bookId);
+      setBooks(updatedBooks);
+    })
+    .catch((error) =>{
+      console.error('Error deleting book:',error)
+    })
+  }
+
+  const handleDeleteAuthor=(authorId)=>{
+    axios.delete(`http://localhost:4000/api/authors/${authorId}`)
+    .then((response) =>{
+      console.log('Author deleted successfully')
+      // Filter the authors to exclude the deleted author
+      const updatedAuthors = authors.filter((author) => author._id !== authorId);
+      setAuthors(updatedAuthors);
+    })
+    .catch((error) =>{
+      console.error('Error deleting author:',error)
+    })
+  }
+  
+
   const handleClick = async () => {
     try {
       const [booksResponse, authorsResponse,categoriesResponse] = await Promise.all([
@@ -41,14 +68,13 @@ function Dashboard() {
 
   return (
     <div>
-      
 
       <Routes>
 
         <Route exact path='/' element={<AdminOutlet handleClick={handleClick}/>}>
-          <Route exact path='/' element={<AdminAllBooks books={books} authors={authors} categories={categories}/>}></Route>
-          <Route path='/adminAllBooks' element={<AdminAllBooks books={books} authors={authors} categories={categories}/>}></Route>
-          <Route path='/adminAllAuthors' element={<AdminAllAuthors authors={authors}/>}></Route>
+          <Route exact path='/' element={<AdminAllBooks books={books} authors={authors} categories={categories} handleDeleteBook={handleDeleteBook}/> }></Route>
+          <Route path='/adminAllBooks' element={<AdminAllBooks books={books} authors={authors} categories={categories} handleDeleteBook={handleDeleteBook}/>}></Route>
+          <Route path='/adminAllAuthors' element={<AdminAllAuthors authors={authors} handleDeleteAuthor={handleDeleteAuthor}/>}></Route>
           <Route path='/adminAllCategories' element={<AdminAllCategories categories={categories}/>}></Route>
           <Route path='/adminAddBook' element={<AddBookForm/>}></Route>
           <Route path='/adminAddAuthor' element={<AddAuthorForm/>}></Route>
