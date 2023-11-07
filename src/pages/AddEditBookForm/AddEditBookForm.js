@@ -1,27 +1,10 @@
 import style from "./AddEditBookForm.module.css";
 import { useState, useEffect } from "react";
+import { useParams, useLocation,Link } from 'react-router-dom';
 import { toast, ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import axios from "axios";
 function AddEditBookForm() {
-  const book = {
-    _id: "6548f5bb0a13fcd6c98d1ae3",
-    title: "soul",
-    ISBN: "098876",
-    publicationDate: "2023-11-01T00:00:00.000Z",
-    description:
-      "Good thinkers are always in demand. A person who knows how may always have a job, but the person who knows why will always be his boss.",
-    nbPages: 885,
-    authorId: "653774a9ecc137fc0d211526",
-    categoryId: "65362ad892ebe34bdbce5170",
-    image: "image-1699280315765-963972417.jpg",
-    language: "English",
-    rating: 1,
-    createdAt: "2023-11-06T14:18:35.796Z",
-    updatedAt: "2023-11-06T14:18:35.796Z",
-    __v: 0,
-  };
-  const type = "Edit";
   const handleSuccessAlert = () => {
     const message = type === "Add" ? "The book is added" : "The book is edited";
     toast.success(message, {
@@ -56,6 +39,10 @@ function AddEditBookForm() {
   };
   const [optionCategory, setOptionCategory] = useState(null);
   const [authors, setAuthors] = useState(null);
+  const location = useLocation();
+  const book = location.state && location.state.book;
+
+  const { type } = useParams();
 
   const resetForm = () => {
     const form = document.getElementById("bookForm");
@@ -269,7 +256,7 @@ function AddEditBookForm() {
             />
           </div>
           <div className={style.buttonContainer}>
-            <button className={style.cancel}>Cancel</button>
+            <Link to={'/dashboard'}><button className={style.cancel}>Cancel</button></Link>
             <button className={style.add}>
               {type === "Add" ? "Add" : "Edit"}
             </button>

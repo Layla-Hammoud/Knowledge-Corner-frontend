@@ -3,18 +3,12 @@ import axios from "axios";
 import { toast, ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 function AddEditAutherForm() {
-  let type = "Edit";
-  let Author = {
-    _id: "654a17a38c7b5ec3bc9e55e8",
-    firstName: "islam",
-    lastName: "hasan",
-    dob: "2023-11-25T00:00:00.000Z",
-    nationality: "Palestinian",
-    biography: "I am a very good author",
-    rating: "5",
-    image: "image-1699354531707-722280707.jpg",
-    __v: 0,
-  };
+
+import { Link,useParams,useLocation } from "react-router-dom";
+function AddEditAutherForm() {
+  const { type } = useParams();
+  const location = useLocation();
+  const author = location.state && location.state.author;
   const resetForm = () => {
     const form = document.getElementById("AuthorForm");
     form.reset();
@@ -125,7 +119,7 @@ function AddEditAutherForm() {
               required
               placeholder="Enter First Name"
               name="firstName"
-              defaultValue={type === "Edit" ? Author.firstName : ""}
+              defaultValue={type === "Edit" ? author.firstName : ""}
             />
           </div>
           <div className={style.inputContainer}>
@@ -136,7 +130,7 @@ function AddEditAutherForm() {
               required
               placeholder="Enter Last Name"
               name="lastName"
-              defaultValue={type === "Edit" ? Author.lastName : ""}
+              defaultValue={type === "Edit" ? author.lastName : ""}
             />
           </div>
           <div className={style.inputContainer}>
@@ -144,9 +138,8 @@ function AddEditAutherForm() {
             <input
               className={style.input}
               type="date"
-              defaultValue={
-                type === "Edit" && Author.dob ? formatDate(Author.dob) : ""
-              }
+
+              defaultValue={type === "Edit" && author.dob ? formatDate(author.dob) : ""}
               placeholder="Enter the date of birth"
               name="dob"
             />
@@ -158,7 +151,7 @@ function AddEditAutherForm() {
               type="text"
               placeholder="Enter the nationality"
               name="nationality"
-              defaultValue={type === "Edit" ? Author.nationality : ""}
+              defaultValue={type === "Edit" ? author.nationality : ""}
             />
           </div>
           <div className={style.inputContainer}>
@@ -170,7 +163,7 @@ function AddEditAutherForm() {
               type="text"
               placeholder="Enter the biography"
               name="biography"
-              defaultValue={type === "Edit" ? Author.biography : ""}
+              defaultValue={type === "Edit" ? author.biography : ""}
             />
           </div>
           <div className={style.inputContainer}>
@@ -180,7 +173,7 @@ function AddEditAutherForm() {
               type="text"
               placeholder="Enter LinkedIn Link"
               name="linkedinLink"
-              defaultValue={type === "Edit" ? Author.linkedinLink : ""}
+              defaultValue={type === "Edit" ? author.linkedinLink : ""}
             />
           </div>
           <div className={style.inputContainer}>
@@ -190,7 +183,7 @@ function AddEditAutherForm() {
               type="text"
               placeholder="Enter Blog Link"
               name="blogLink"
-              defaultValue={type === "Edit" ? Author.blogLink : ""}
+              defaultValue={type === "Edit" ? author.blogLink : ""}
             />
           </div>
           <div className={style.inputContainer}>
@@ -200,7 +193,7 @@ function AddEditAutherForm() {
               type="text"
               placeholder="Enter twitter Link"
               name="twitterLink"
-              defaultValue={type === "Edit" ? Author.twitterLink : ""}
+              defaultValue={type === "Edit" ? author.twitterLink : ""}
             />
           </div>
           <div className={style.inputContainer}>
@@ -221,11 +214,11 @@ function AddEditAutherForm() {
               min={0}
               placeholder="Enter the rating"
               name="rating"
-              defaultValue={type === "Edit" ? Author.rating : ""}
+              defaultValue={type === "Edit" ? author.rating : ""}
             />
           </div>
           <div className={style.buttonContainer}>
-            <button className={style.cancel}>Cancel</button>
+          <Link to={'/dashboard'}><button className={style.cancel}>Cancel</button></Link>
             <button className={style.add}>
               {type === "Add" ? "Add" : "Edit"}
             </button>
