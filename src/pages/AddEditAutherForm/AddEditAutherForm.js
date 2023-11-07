@@ -2,8 +2,6 @@ import style from "./AddEditAuthor.module.css";
 import axios from "axios";
 import { toast, ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
-function AddEditAutherForm() {
-
 import { Link,useParams,useLocation } from "react-router-dom";
 function AddEditAutherForm() {
   const { type } = useParams();
@@ -87,7 +85,7 @@ function AddEditAutherForm() {
     } else if (type === "Edit") {
       showWaitingToast();
       axios
-        .patch(`http://localhost:4000/api/authors/${Author._id}`, newFormData)
+        .patch(`http://localhost:4000/api/authors/${author._id}`, newFormData)
         .then((response) => {
           console.log("Request was successful:", response.data);
           handleSuccessAlert();
