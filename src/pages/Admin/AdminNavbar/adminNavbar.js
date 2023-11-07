@@ -41,7 +41,7 @@ function adminNavbar({handleClick}) {
                 </button>
 
                 <button className={adminNavbarStyle.addButton}>
-                    <Link to={"/dashboard/adminAddBook"} className={adminNavbarStyle.addMVC}>Add Book</Link>
+                    <Link to={"/dashboard/adminAddBook/Add"} className={adminNavbarStyle.addMVC}>Add Book</Link>
                 </button>
 
                 <button className={adminNavbarStyle.addButton}>

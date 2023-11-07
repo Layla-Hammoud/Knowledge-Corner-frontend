@@ -1,21 +1,48 @@
-import React from 'react'
-import addCategoryStyle from './addCategory.module.css'
+import React, { useState } from "react";
+import addCategoryStyle from "./addCategory.module.css";
+import axios from "axios";
 
-function addCategory() {
-    return (
-        <div className={addCategoryStyle.addCategoryComponent}>
-            <h1>Add</h1>
+function AddCategory() {
+  const [categoryName, setCategoryName] = useState("");
 
-            <form className={addCategoryStyle.formCategory}>
-                <label for="categoryName">Category's name</label>
-                <input type="text" id="categoryName" name="Name" placeholder='Enter Category name' required />
+  const handleCategoryNameChange = (e) => {
+    setCategoryName(e.target.value);
+  };
 
-                <button className={addCategoryStyle.cancelButton}>Cancel</button>
-                <button className={addCategoryStyle.addButton}>Add</button>
-            </form>
+  const addCategory = (e) => {
+    e.preventDefault();
+    axios
+      .post("http://localhost:4000/api/categories", { name: categoryName })
+      .then((response) => {
+        console.log("Category created");
+        setCategoryName("");
+      })
+      .catch((error) => {
+        console.log("Error creating category");
+      });
+  };
 
-        </div>
-    )
+  return (
+    <div className={addCategoryStyle.addCategoryComponent}>
+      <h1>Add</h1>
+
+      <form className={addCategoryStyle.formCategory} onSubmit={addCategory}>
+        <label for="category">Category's name</label>
+        <input
+          type="text"
+          placeholder="Category Name"
+          value={categoryName}
+          onChange={handleCategoryNameChange}
+          required
+        />
+
+        <button className={addCategoryStyle.cancelButton}>Cancel</button>
+        <button type="submit" className={addCategoryStyle.addButton}>
+          Add
+        </button>
+      </form>
+    </div>
+  );
 }
 
-export default addCategory
+export default AddCategory;

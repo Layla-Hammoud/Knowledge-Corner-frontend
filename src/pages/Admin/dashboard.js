@@ -43,6 +43,19 @@ function Dashboard() {
       console.error('Error deleting author:',error)
     })
   }
+
+  const handleDeleteCategory=(categoryId)=>{
+    axios.delete(`http://localhost:4000/api/categories/${categoryId}`)
+    .then((response)=>{
+      console.log("Category deleted successfully")
+
+      const updatedCategories = categories.filter((category) => category._id !== categoryId);
+      setCategories(updatedCategories)
+    })
+    .catch((error)=>{
+      console.error('Error deleting category:',error)
+    })
+  }
   
 
   const handleClick = async () => {
@@ -75,8 +88,8 @@ function Dashboard() {
           <Route exact path='/' element={<AdminAllBooks books={books} authors={authors} categories={categories} handleDeleteBook={handleDeleteBook}/> }></Route>
           <Route path='/adminAllBooks' element={<AdminAllBooks books={books} authors={authors} categories={categories} handleDeleteBook={handleDeleteBook}/>}></Route>
           <Route path='/adminAllAuthors' element={<AdminAllAuthors authors={authors} handleDeleteAuthor={handleDeleteAuthor}/>}></Route>
-          <Route path='/adminAllCategories' element={<AdminAllCategories categories={categories}/>}></Route>
-          <Route path='/adminAddBook' element={<AddBookForm/>}></Route>
+          <Route path='/adminAllCategories' element={<AdminAllCategories categories={categories} handleDeleteCategory={handleDeleteCategory}/>}></Route>
+          <Route path='/adminAddBook/:type' element={<AddBookForm/>}></Route>
           <Route path='/adminAddAuthor' element={<AddAuthorForm/>}></Route>
           <Route path='/adminAddCategory' element={<AddCategoryForm/>}></Route>
         </Route>
