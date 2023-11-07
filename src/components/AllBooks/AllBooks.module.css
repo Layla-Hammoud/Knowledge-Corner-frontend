@@ -31,10 +31,15 @@
 .figure {
   height: 440px;
   width: 14vw;
+  transition: all 0.3s ease;
 }
 .image {
   width: 194px;
   height: 290px;
+  /* transition: all 0.3s ease; */
+}
+.figure:hover {
+  transform: scale(1.1);
 }
 .figcaption {
   width: 1fr;
