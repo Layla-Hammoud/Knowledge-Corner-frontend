@@ -7,7 +7,7 @@ import navBarStyle from "./navbar.module.css";
 
 const NavBar = () => {
   const [menuOpenn, setMenuOpenn] = useState(false);
-  const [isActive, setActive] = useState([false, false, false]);
+  const [isActive, setActive] = useState([false, false, false, false]);
   const [isResponsive, setIsResponsive] = useState(window.innerWidth <= 480);
 
   const handleSearch = () => {
@@ -34,7 +34,7 @@ const NavBar = () => {
         <div className={navBarStyle.logoContainer}>
           <NavLink
             onClick={() => {
-              setActive([true, false, false]);
+              setActive([true, false, false, false]);
             }}
             to={"./"}
           >
@@ -63,7 +63,7 @@ const NavBar = () => {
           <li>
             <NavLink
               onClick={() => {
-                setActive([true, false, false]);
+                setActive([true, false, false, false]);
               }}
               className={`${navBarStyle.navLi} ${
                 isActive[0] ? navBarStyle.active : ""
@@ -76,7 +76,7 @@ const NavBar = () => {
           <li>
             <NavLink
               onClick={() => {
-                setActive([false, true, false]);
+                setActive([false, true, false, false]);
               }}
               className={`${navBarStyle.navLi} ${
                 isActive[1] ? navBarStyle.active : ""
@@ -89,7 +89,7 @@ const NavBar = () => {
           <li>
             <NavLink
               onClick={() => {
-                setActive([false, false, true]);
+                setActive([false, false, true, false]);
               }}
               className={`${navBarStyle.navLi} ${
                 isActive[2] ? navBarStyle.active : ""
@@ -97,6 +97,19 @@ const NavBar = () => {
               to={"./AllAuthors"}
             >
               All Authors
+            </NavLink>
+          </li>
+          <li>
+            <NavLink
+              onClick={() => {
+                setActive([false, false, false, true]);
+              }}
+              className={`${navBarStyle.navLi} ${
+                isActive[3] ? navBarStyle.active : ""
+              }`}
+              to={"./AboutUs"}
+            >
+              About Us
             </NavLink>
           </li>
         </ul>
