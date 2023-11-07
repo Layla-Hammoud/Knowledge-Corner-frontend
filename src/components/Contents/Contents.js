@@ -34,7 +34,6 @@ function Contents() {
       <div className={contentsStyle.imageContainer}>
         {book.map((item, id) => (
           <div key={id} className={contentsStyle.bookContainer}>
-            {/* <Link to={'/SingleBook'}> */}
             <Link
               to="/SingleBook"
               state= {{ book: item }}

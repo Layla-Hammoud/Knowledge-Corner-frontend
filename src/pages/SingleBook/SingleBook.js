@@ -2,12 +2,56 @@ import BookCard from "../../components/BookCard/BookCard";
 import BookCover from "../../assets/images/bookcover.jpg";
 import style from "./SingleBook.module.css";
 import Stars from "../../components/Stars/Stars";
-import { useLocation } from 'react-router-dom';
+import { useEffect, useState } from "react";
+import { useLocation, Link } from 'react-router-dom';
+import axios from "axios";
 
 function SingleBook() {
 
   const location = useLocation();
   const book = location.state && location.state.book;
+
+  const [books, setBooks] = useState([]);
+  const [author, setAuthor] = useState({})
+  const [category, setCategory] = useState({})
+
+  function fetchAuthorData() {
+    axios
+      .get(`http://localhost:4000/api/authors/${book.authorId}`)
+      .then((response) => {
+        setAuthor(response.data);
+      })
+      .catch((error) => {
+        console.error("Error in fetching:", error);
+      });
+  }
+
+  function fetchCategoryData() {
+    axios
+      .get(`http://localhost:4000/api/categories/${book.categoryId}`)
+      .then((response) => {
+        setCategory(response.data);
+      })
+      .catch((error) => {
+        console.error("Error in fetching:", error);
+      });
+  }
+
+  useEffect(() => {
+    async function fetchData() {
+      try {
+        const response = await axios.get(
+          "http://localhost:4000/api/books/limitedBooks?limit=6"
+        );
+        setBooks(response.data);
+      } catch (error) {
+        console.error("Error:", error);
+      }
+    }
+    fetchData()
+    fetchAuthorData()
+    fetchCategoryData()
+  }, []);
 
   function formatDate(inputDate) {
     const date = new Date(inputDate);
@@ -15,23 +59,7 @@ function SingleBook() {
 
     return formattedDate;
   }
-  // let book = {
-  //   _id: "6548f5bb0a13fcd6c98d1ae3",
-  //   title: "soul",
-  //   ISBN: "098876",
-  //   publicationDate: "2023-11-01T00:00:00.000Z",
-  //   description:
-  //     "Good thinkers are always in demand. A person who knows how may always have a job, but the person who knows why will always be his boss.",
-  //   nbPages: 885,
-  //   authorId: "653774a9ecc137fc0d211526",
-  //   categoryId: "65362ad892ebe34bdbce5170",
-  //   image: "image-1699280315765-963972417.jpg",
-  //   language: "English",
-  //   rating: 1,
-  //   createdAt: "2023-11-06T14:18:35.796Z",
-  //   updatedAt: "2023-11-06T14:18:35.796Z",
-  //   __v: 0,
-  // };
+
   return (
     
     <section className={style.singleBookContainer}>
@@ -48,9 +76,9 @@ function SingleBook() {
           <h3 className={style.info}>
             {book.title}
           </h3>
-          <h4 className={style.info}>{book.authorId}</h4>
+          <h4 className={style.info}>{author.firstName} {author.lastName}</h4>
           <p className={style.info}>
-            Genre:<span className={style.spantext}>{book.categoryId}</span>
+            Genre:<span className={style.spantext}>{category.name}</span>
           </p>
           <p className={style.info}>
             Language :<span className={style.spantext}>{book.language}</span>{" "}
@@ -72,12 +100,16 @@ function SingleBook() {
       </div>
       <h4 className={style.suggestedBookTitle}>Readers also enjoyed</h4>
       <aside className={style.suggestedBook}>
-        <BookCard isSmall={true} />
-        <BookCard isSmall={true} />
-        <BookCard isSmall={true} />
-        <BookCard isSmall={true} />
-        <BookCard isSmall={true} />
-        <BookCard isSmall={true} />
+      {books.map((item, id) => (
+          <div key={id}>
+            <Link
+              to="/SingleBook"
+              state= {{ book: item }}
+            >
+              <BookCard isSmall={true} book={item}/>
+            </Link>
+          </div>
+        ))}
       </aside>
     </section>
   );

@@ -9,7 +9,13 @@
 }
 .figcaption{
     text-align: center;
+    width: 200px;
+    line-height: 1.5em;
 }
 .figcaption>p{
  margin: 10px 0;
+}
+a{
+    text-decoration: none;
+    color: black;
 }

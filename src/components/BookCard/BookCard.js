@@ -1,7 +1,7 @@
 import BookCover from "../../assets/images/bookcover.jpg";
 import style from "./BookCard.module.css";
 import Stars from "../Stars/Stars";
-const BookCard = ({isSmall}) => {
+const BookCard = ({isSmall,book}) => {
   let rating = 4;
   const size = {
     width: isSmall ? '200px' : '250px',
@@ -10,15 +10,14 @@ const BookCard = ({isSmall}) => {
   return (
     <>
       <figure className={style.figure} >
-        <img src={BookCover} alt="Book cover" className={style.image} style={size}/>
+        <img src={`http://localhost:4000/images/${book.image}`} alt="Book cover" className={style.image} style={size}/>
         <figcaption className={style.figcaption}>
           <p>
-            <strong>Memory</strong>
+            <span>{book.title}</span>
           </p>
-          <p>Hana Hope</p>
           <div className={style.StarContainer}> 
             {[1, 2, 3, 4, 5].map((star) => (
-              <Stars key={star} stars={star} rating={rating}/>
+              <Stars key={star} stars={star} rating={book.rating}/>
             ))}
           </div>
         </figcaption>
