@@ -8,6 +8,7 @@ import Dashboard from '../pages/Admin/dashboard'
 import UserOutlet from "../Outlet/userOutlet";
 import NotFound from '../components/NotFound/WebsiteNotFound'
 import AboutUs from '../pages/AboutUs/AboutUs';
+import SingleAuther from '../pages/SingleAuther/SingleAuther';
 
 function AppRoutes() {
   return (
@@ -19,6 +20,7 @@ function AppRoutes() {
           <Route path="/AllAuthors" element={<AllAuthors />}></Route>
           <Route path="/SingleBook" element={<SingleBook/>}></Route>
           <Route path='/AboutUs' element={<AboutUs/>}></Route>
+          <Route path='/SingleAuthor' element={<SingleAuther/>}></Route>
         </Route>
 
         <Route path="/dashboard/*" element={<Dashboard/>}></Route>

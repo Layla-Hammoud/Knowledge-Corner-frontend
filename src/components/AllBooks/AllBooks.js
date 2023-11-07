@@ -4,6 +4,7 @@ import filter from "../../assets/icons/filter.png";
 import axios from "axios";
 import magnifire from "../../assets/icons/magnifire.jpeg";
 import TempBookCard from "../BookCard/tempBookCard";
+import { Link } from "react-router-dom";
 
 const AllBooks = () => {
   const [menuOpen, setMenuOpen] = useState(false);
@@ -188,13 +189,15 @@ const AllBooks = () => {
 
         <div className={AllBooksStyle.booksList}>
           {filteredBooks.map((book) => (
-            <TempBookCard
-              image={book.image}
-              author={authors[book.authorId]}
-              bookTitle={book.title}
-              rating={book.rating}
-              category={categoriesMap[book.categoryId]}
-            />
+            <Link to="/SingleBook" state={{ book: book }}>
+              <TempBookCard
+                image={book.image}
+                author={authors[book.authorId]}
+                bookTitle={book.title}
+                rating={book.rating}
+                category={categoriesMap[book.categoryId]}
+              />
+            </Link>
           ))}
         </div>
       </div>

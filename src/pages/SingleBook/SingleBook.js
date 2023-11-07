@@ -10,7 +10,6 @@ function SingleBook() {
 
   const location = useLocation();
   const book = location.state && location.state.book;
-
   const [books, setBooks] = useState([]);
   const [author, setAuthor] = useState({})
   const [category, setCategory] = useState({})
