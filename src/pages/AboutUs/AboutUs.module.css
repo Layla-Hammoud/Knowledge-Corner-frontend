@@ -1,0 +1,160 @@
+.showLess{
+    border: none;
+    background-color: transparent;
+    color: blue;
+}
+
+.libraryContainer{
+    display: flex;
+    flex-direction: column;
+    row-gap: 20px;
+    align-items: center;
+    margin-bottom: 50px;
+}
+
+.header{
+    display: flex;
+    flex-direction: column;
+    row-gap: 20px;
+    align-items: center;
+}
+
+.bigWord {
+    font-size: 2em; /* You can adjust the size as needed */
+    font-weight: bold; /* You can adjust the weight as needed */
+    color: var(--primary-color);
+  }
+  
+
+.header > img{
+    height: 70vh;
+    width: 90%;
+    border-radius: 100px;
+}
+
+.header > p{
+    font-size: 20px;
+    width: 80%;
+}
+
+
+.aboutustitle {
+    font-family: 'Cursive', sans-serif; /* Choose an appealing font-family */
+    color: var(--primary-color); /* Set the text color to a nice blue shade */
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5); /* Add a subtle text shadow for depth */
+    background: linear-gradient(45deg, #f06, #f90); /* Apply a gradient background */
+    background-clip: text; 
+    -webkit-background-clip: text; 
+    display: inline-block; 
+    font-size: 3rem; /* Adjust the font size to your liking */
+    padding: 0.2em 0.5em; /* Add some padding for spacing */
+  }
+
+  .firstComponent{
+    display: flex;
+    column-gap: 200px;
+    justify-content: center;
+    align-items: center;
+  }
+
+  .firstComponent > p{
+    width: 30%;
+    font-size: 20px;
+  }
+
+  .firstComponent > img{
+    width: 30%;
+    height: 60%;
+    border-radius: 100px;
+  }
+
+  .vision{
+    margin-bottom: 10px;
+    color: var(--primary-color);
+    padding: 10px;
+    border-left: 10px solid var(--primary-color);
+    border-radius: 10px;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+  }
+
+
+  .secondComponent{
+    display: flex;
+    flex-direction: row-reverse;
+    column-gap: 200px;
+    justify-content: center;
+    align-items: center;
+  }
+
+  .secondComponent > p{
+    width: 30%;
+    font-size: 20px;
+  }
+
+  .secondComponent > img{
+    width: 30%;
+    height: 60%;
+    border-radius: 100px;
+  }
+
+
+  @media only screen and (max-width: 1700px){
+    .firstComponent > img{
+        width: 50%;
+        height: 100%;
+        border-radius: 100px;
+      }
+
+      .firstComponent{
+        display: flex;
+        column-gap: 20px;
+        justify-content: center;
+        align-items: center;
+      }
+
+      .secondComponent{
+        display: flex;
+        flex-direction: row-reverse;
+        column-gap: 20px;
+        justify-content: center;
+        align-items: center;
+      }
+
+      .secondComponent > img{
+        width: 50%;
+        height: 100%;
+        border-radius: 100px;
+      }
+  }
+  
+
+  @media only screen and (max-width: 1100px){
+    .header > img{
+        height: 30vh;
+    }
+
+    .firstComponent{
+        flex-direction: column;
+    }
+
+    .firstComponent > img{
+        width: 90%;
+        height: 30vh;
+    }
+    .firstComponent > p{
+        width: 90%;
+    }
+
+    .secondComponent{
+        flex-direction: column;
+    }
+
+    .secondComponent > img{
+        width: 90%;
+        height: 30vh;
+    }
+
+    .secondComponent > p{
+        width: 90%;
+    }
+  }

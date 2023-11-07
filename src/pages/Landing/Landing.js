@@ -3,9 +3,10 @@ import Content from '../../components/Contents/Contents'
 import HeroSection from '../../components/HeroSection/HeroSection'
 
 function Landing() {
+    
     return (
         <div>
-            <HeroSection />
+            <HeroSection/>
             <Content/>
         </div>
     )
