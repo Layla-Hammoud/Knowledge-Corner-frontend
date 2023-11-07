@@ -1,29 +1,29 @@
 import style from "./AddEditBookForm.module.css";
 import { useState, useEffect } from "react";
-import { toast, ToastContainer } from 'react-toastify';
-import 'react-toastify/dist/ReactToastify.css';
+import { toast, ToastContainer } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 import axios from "axios";
 function AddEditBookForm() {
   const book = {
-    _id: "654633ffa99dfeb67c7e209f",
-    title: "How Successful People Think",
-    ISBN: "9999999",
-    publicationDate: "1987-02-26T22:00:00.000Z",
+    _id: "6548f5bb0a13fcd6c98d1ae3",
+    title: "soul",
+    ISBN: "098876",
+    publicationDate: "2023-11-01T00:00:00.000Z",
     description:
       "Good thinkers are always in demand. A person who knows how may always have a job, but the person who knows why will always be his boss.",
-    nbPages: 154,
-    authorId: "6533ca8d1a5b8a0179bd89af",
-    categoryId: "65362be092ebe34bdbce518a",
-    image: "image-1699099647757-263737856.jpg",
-    language: "Arabic",
-    rating: 4,
-    createdAt: "2023-11-04T12:07:27.781Z",
-    updatedAt: "2023-11-04T12:07:27.781Z",
+    nbPages: 885,
+    authorId: "653774a9ecc137fc0d211526",
+    categoryId: "65362ad892ebe34bdbce5170",
+    image: "image-1699280315765-963972417.jpg",
+    language: "English",
+    rating: 1,
+    createdAt: "2023-11-06T14:18:35.796Z",
+    updatedAt: "2023-11-06T14:18:35.796Z",
     __v: 0,
   };
-  const type = "Add";
+  const type = "Edit";
   const handleSuccessAlert = () => {
-    const message = type === 'Add'? 'The book is added' :  'The book is edited'
+    const message = type === "Add" ? "The book is added" : "The book is edited";
     toast.success(message, {
       position: "top-right",
       autoClose: 3000,
@@ -36,7 +36,7 @@ function AddEditBookForm() {
   const handleErrorAlert = (errorMessage) => {
     toast.error(errorMessage, {
       position: "top-right",
-      autoClose: 3000, 
+      autoClose: 3000,
       hideProgressBar: false,
       closeOnClick: true,
       pauseOnHover: true,
@@ -46,12 +46,12 @@ function AddEditBookForm() {
   const showWaitingToast = () => {
     toast("Please wait...", {
       position: "top-right",
-      autoClose: 100, 
-      hideProgressBar: true, 
-      closeOnClick: false, 
-      pauseOnHover: false, 
-      draggable: false, 
-      className: "custom-waiting-toast"
+      autoClose: 100,
+      hideProgressBar: true,
+      closeOnClick: false,
+      pauseOnHover: false,
+      draggable: false,
+      className: "custom-waiting-toast",
     });
   };
   const [optionCategory, setOptionCategory] = useState(null);
@@ -73,7 +73,7 @@ function AddEditBookForm() {
     e.preventDefault();
     const formData = new FormData(e.target);
     const newFormData = new FormData();
-    const imageInput = e.target.querySelector('#imageInput'); 
+    const imageInput = e.target.querySelector("#imageInput");
     if (imageInput.files.length <= 0) {
       // Remove the "image" field if no file is selected
       formData.delete("image");
@@ -85,30 +85,30 @@ function AddEditBookForm() {
       }
     }
     if (type === "Add") {
-      showWaitingToast()
+      showWaitingToast();
       axios
         .post("http://localhost:4000/api/books", formData)
         .then((response) => {
           console.log("Request was successful:", response.data);
-          handleSuccessAlert()
+          handleSuccessAlert();
           resetForm();
         })
         .catch((error) => {
           console.error("Error while making the request:", error);
-          handleErrorAlert(error.message)
+          handleErrorAlert(error.message);
         });
     } else if (type === "Edit") {
-      console.log(formData)
-      showWaitingToast()
+      console.log(formData);
+      showWaitingToast();
       axios
         .patch(`http://localhost:4000/api/books/${book._id}`, formData)
         .then((response) => {
           console.log("Request was successful:", response.data);
-          handleSuccessAlert()
+          handleSuccessAlert();
         })
         .catch((error) => {
           console.error("Error while making the request:", error);
-          handleErrorAlert(error.message)
+          handleErrorAlert(error.message);
         });
     }
   };
@@ -140,7 +140,7 @@ function AddEditBookForm() {
   }, []);
   return (
     <>
-    <ToastContainer />
+      <ToastContainer />
       <div className={style.fromContainer}>
         <form className={style.bookform} id="bookForm" onSubmit={addBook}>
           <h1 className={style.title}>

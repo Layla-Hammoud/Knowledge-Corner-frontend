@@ -1,18 +1,18 @@
 import style from "./AddEditAuthor.module.css";
 import axios from "axios";
-import { toast, ToastContainer } from 'react-toastify';
-import 'react-toastify/dist/ReactToastify.css';
+import { toast, ToastContainer } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 function AddEditAutherForm() {
-  let type = "Add";
+  let type = "Edit";
   let Author = {
-    _id: "6548020acc8eb8ee83c3eb62",
-    firstName: "nahla",
-    lastName: "amir",
-    dob: "2023-10-31T00:00:00.000Z",
+    _id: "654a17a38c7b5ec3bc9e55e8",
+    firstName: "islam",
+    lastName: "hasan",
+    dob: "2023-11-25T00:00:00.000Z",
+    nationality: "Palestinian",
     biography: "I am a very good author",
-    blogLink: "",
-    rating: "4",
-    image: "public/images/image-1699217930732-182439190.png",
+    rating: "5",
+    image: "image-1699354531707-722280707.jpg",
     __v: 0,
   };
   const resetForm = () => {
@@ -21,7 +21,8 @@ function AddEditAutherForm() {
   };
 
   const handleSuccessAlert = () => {
-    const message = type === 'Add'? 'The author is added' :  'The author is edited'
+    const message =
+      type === "Add" ? "The author is added" : "The author is edited";
     toast.success(message, {
       position: "top-right",
       autoClose: 3000,
@@ -34,7 +35,7 @@ function AddEditAutherForm() {
   const handleErrorAlert = (errorMessage) => {
     toast.error(errorMessage, {
       position: "top-right",
-      autoClose: 3000, 
+      autoClose: 3000,
       hideProgressBar: false,
       closeOnClick: true,
       pauseOnHover: true,
@@ -46,11 +47,11 @@ function AddEditAutherForm() {
     toast("Please wait...", {
       position: "top-right",
       autoClose: 100,
-      hideProgressBar: true, 
-      closeOnClick: false, 
-      pauseOnHover: false, 
-      draggable: false, 
-      className: "custom-waiting-toast"
+      hideProgressBar: true,
+      closeOnClick: false,
+      pauseOnHover: false,
+      draggable: false,
+      className: "custom-waiting-toast",
     });
   };
 
@@ -65,7 +66,7 @@ function AddEditAutherForm() {
     e.preventDefault();
     const formData = new FormData(e.target);
     const newFormData = new FormData();
-    const imageInput = e.target.querySelector('#imageInput'); 
+    const imageInput = e.target.querySelector("#imageInput");
     if (imageInput.files.length <= 0) {
       // Remove the "image" field if no file is selected
       formData.delete("image");
@@ -77,36 +78,36 @@ function AddEditAutherForm() {
       }
     }
     if (type === "Add") {
-      showWaitingToast()
+      showWaitingToast();
       axios
         .post("http://localhost:4000/api/authors", newFormData)
         .then((response) => {
           console.log("Request was successful:", response.data);
-          handleSuccessAlert()
+          handleSuccessAlert();
           resetForm();
         })
         .catch((error) => {
           console.error("Error while making the request:", error);
-          handleErrorAlert(error.message)
+          handleErrorAlert(error.message);
         });
     } else if (type === "Edit") {
-      showWaitingToast()
+      showWaitingToast();
       axios
         .patch(`http://localhost:4000/api/authors/${Author._id}`, newFormData)
         .then((response) => {
           console.log("Request was successful:", response.data);
-          handleSuccessAlert()
+          handleSuccessAlert();
         })
         .catch((error) => {
           console.error("Error while making the request:", error);
-          handleErrorAlert(error.message)
+          handleErrorAlert(error.message);
         });
     }
   };
 
   return (
     <>
-    <ToastContainer />
+      <ToastContainer />
       <div className={style.fromContainer}>
         <form
           className={style.authorForm}
@@ -204,7 +205,12 @@ function AddEditAutherForm() {
           </div>
           <div className={style.inputContainer}>
             <label className={style.label}>Enter an image of the Author</label>
-            <input className={style.input} type="file" name="image" id="imageInput" />
+            <input
+              className={style.input}
+              type="file"
+              name="image"
+              id="imageInput"
+            />
           </div>
           <div className={style.inputContainer}>
             <label className={style.label}>rating</label>
