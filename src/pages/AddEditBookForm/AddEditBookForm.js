@@ -1,9 +1,14 @@
 import style from "./AddEditBookForm.module.css";
 import { useState, useEffect } from "react";
+import { useParams, useLocation,Link } from 'react-router-dom';
 import axios from "axios";
-function AddEditBookForm({ type, book }) {
+function AddEditBookForm() {
   const [optionCategory, setOptionCategory] = useState(null);
   const [authors, setAuthors] = useState(null);
+  const location = useLocation();
+  const book = location.state && location.state.book;
+
+  const { type } = useParams();
 
   const resetForm = () => {
     const form = document.getElementById("bookForm");
@@ -204,7 +209,7 @@ function AddEditBookForm({ type, book }) {
             />
           </div>
           <div className={style.buttonContainer}>
-            <button className={style.cancel}>Cancel</button>
+            <Link to={'/dashboard'}><button className={style.cancel}>Cancel</button></Link>
             <button className={style.add}>
               {type === "Add" ? "Add" : "Edit"}
             </button>

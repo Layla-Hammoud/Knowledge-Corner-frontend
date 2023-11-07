@@ -2,7 +2,7 @@ import React from "react";
 import adminAllBooksStyle from "./adminAllBooks.module.css";
 import x from "../../../assets/icons/862px-Delete-button 1.svg";
 import update from "../../../assets/icons/Vector (4).svg";
-
+import { Link } from "react-router-dom";
 function adminAllAuthors({ authors , handleDeleteAuthor }) {
 
   return (
@@ -28,9 +28,11 @@ function adminAllAuthors({ authors , handleDeleteAuthor }) {
               <td>{author.nationality}</td>
               <td>{author.rating}</td>
               <td className={adminAllBooksStyle.buttonContainer}>
+              <Link to={"/dashboard/adminAddAuthor/Edit"} state={{author}}>
                 <button className={adminAllBooksStyle.updateDelete}>
                   <img src={update} alt="update" />
                 </button>
+              </Link>
                 <button className={adminAllBooksStyle.updateDelete}>
                   <img src={x} alt="delete" onClick={() => {
                         handleDeleteAuthor(author._id);

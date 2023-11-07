@@ -90,7 +90,7 @@ function Dashboard() {
           <Route path='/adminAllAuthors' element={<AdminAllAuthors authors={authors} handleDeleteAuthor={handleDeleteAuthor}/>}></Route>
           <Route path='/adminAllCategories' element={<AdminAllCategories categories={categories} handleDeleteCategory={handleDeleteCategory}/>}></Route>
           <Route path='/adminAddBook/:type' element={<AddBookForm/>}></Route>
-          <Route path='/adminAddAuthor' element={<AddAuthorForm/>}></Route>
+          <Route path='/adminAddAuthor/:type' element={<AddAuthorForm/>}></Route>
           <Route path='/adminAddCategory' element={<AddCategoryForm/>}></Route>
         </Route>
 
