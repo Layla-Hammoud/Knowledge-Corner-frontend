@@ -36,7 +36,6 @@
 .image {
   width: 194px;
   height: 290px;
-  /* transition: all 0.3s ease; */
 }
 .figure:hover {
   transform: scale(1.1);
