@@ -2,7 +2,12 @@ import BookCard from "../../components/BookCard/BookCard";
 import BookCover from "../../assets/images/bookcover.jpg";
 import style from "./SingleBook.module.css";
 import Stars from "../../components/Stars/Stars";
+import { useLocation } from 'react-router-dom';
+
 function SingleBook() {
+
+  const location = useLocation();
+  const book = location.state && location.state.book;
 
   function formatDate(inputDate) {
     const date = new Date(inputDate);
@@ -10,24 +15,25 @@ function SingleBook() {
 
     return formattedDate;
   }
-  let book = {
-    _id: "6548f5bb0a13fcd6c98d1ae3",
-    title: "soul",
-    ISBN: "098876",
-    publicationDate: "2023-11-01T00:00:00.000Z",
-    description:
-      "Good thinkers are always in demand. A person who knows how may always have a job, but the person who knows why will always be his boss.",
-    nbPages: 885,
-    authorId: "653774a9ecc137fc0d211526",
-    categoryId: "65362ad892ebe34bdbce5170",
-    image: "image-1699280315765-963972417.jpg",
-    language: "English",
-    rating: 1,
-    createdAt: "2023-11-06T14:18:35.796Z",
-    updatedAt: "2023-11-06T14:18:35.796Z",
-    __v: 0,
-  };
+  // let book = {
+  //   _id: "6548f5bb0a13fcd6c98d1ae3",
+  //   title: "soul",
+  //   ISBN: "098876",
+  //   publicationDate: "2023-11-01T00:00:00.000Z",
+  //   description:
+  //     "Good thinkers are always in demand. A person who knows how may always have a job, but the person who knows why will always be his boss.",
+  //   nbPages: 885,
+  //   authorId: "653774a9ecc137fc0d211526",
+  //   categoryId: "65362ad892ebe34bdbce5170",
+  //   image: "image-1699280315765-963972417.jpg",
+  //   language: "English",
+  //   rating: 1,
+  //   createdAt: "2023-11-06T14:18:35.796Z",
+  //   updatedAt: "2023-11-06T14:18:35.796Z",
+  //   __v: 0,
+  // };
   return (
+    
     <section className={style.singleBookContainer}>
       <div className={style.mainInfoContainer}>
         <article className={style.imgContainer}>
@@ -42,9 +48,9 @@ function SingleBook() {
           <h3 className={style.info}>
             {book.title}
           </h3>
-          <h4 className={style.info}>need to check</h4>
+          <h4 className={style.info}>{book.authorId}</h4>
           <p className={style.info}>
-            Genre:<span className={style.spantext}>need to check</span>
+            Genre:<span className={style.spantext}>{book.categoryId}</span>
           </p>
           <p className={style.info}>
             Language :<span className={style.spantext}>{book.language}</span>{" "}
