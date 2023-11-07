@@ -1,56 +1,114 @@
 import BookCard from "../../components/BookCard/BookCard";
 import BookCover from "../../assets/images/bookcover.jpg";
-import style from './SingleBook.module.css'
+import style from "./SingleBook.module.css";
 import Stars from "../../components/Stars/Stars";
+import { useEffect, useState } from "react";
+import { useLocation, Link } from 'react-router-dom';
+import axios from "axios";
+
 function SingleBook() {
-  let rating=3;
+
+  const location = useLocation();
+  const book = location.state && location.state.book;
+  const [books, setBooks] = useState([]);
+  const [author, setAuthor] = useState({})
+  const [category, setCategory] = useState({})
+
+  function fetchAuthorData() {
+    axios
+      .get(`http://localhost:4000/api/authors/${book.authorId}`)
+      .then((response) => {
+        setAuthor(response.data);
+      })
+      .catch((error) => {
+        console.error("Error in fetching:", error);
+      });
+  }
+
+  function fetchCategoryData() {
+    axios
+      .get(`http://localhost:4000/api/categories/${book.categoryId}`)
+      .then((response) => {
+        setCategory(response.data);
+      })
+      .catch((error) => {
+        console.error("Error in fetching:", error);
+      });
+  }
+
+  useEffect(() => {
+    async function fetchData() {
+      try {
+        const response = await axios.get(
+          "http://localhost:4000/api/books/limitedBooks?limit=6"
+        );
+        setBooks(response.data);
+      } catch (error) {
+        console.error("Error:", error);
+      }
+    }
+    fetchData()
+    fetchAuthorData()
+    fetchCategoryData()
+  }, []);
+
+  function formatDate(inputDate) {
+    const date = new Date(inputDate);
+    const formattedDate = date.toISOString().split("T")[0];
+
+    return formattedDate;
+  }
+
   return (
-    <section>
+    
+    <section className={style.singleBookContainer}>
       <div className={style.mainInfoContainer}>
         <article className={style.imgContainer}>
-          <img className={style.image} src={BookCover} alt="Book cover"/>
-          <div className={style.StarSingleContainer}> 
+          <img className={style.image} src={`http://localhost:4000/images/${book.image}`} alt="Book cover" />
+          <div className={style.StarSingleContainer}>
             {[1, 2, 3, 4, 5].map((star) => (
-              <Stars key={star} stars={star} rating={rating}/>
+              <Stars key={star} stars={star} rating={book.rating} />
             ))}
           </div>
         </article>
         <article className={style.infoContainer}>
-            <h3 className={style.info}>Atomic Habits: An Easy & Proven Way to Build Good Habits & Break Bad Ones</h3>
-            <h4 className={style.info}>James Clear</h4>
+          <h3 className={style.info}>
+            {book.title}
+          </h3>
+          <h4 className={style.info}>{author.firstName} {author.lastName}</h4>
           <p className={style.info}>
-            Genre:<strong>Self help</strong>
+            Genre:<span className={style.spantext}>{category.name}</span>
           </p>
           <p className={style.info}>
-            Language :<strong>English</strong>{" "}
+            Language :<span className={style.spantext}>{book.language}</span>{" "}
           </p>
           <p className={style.info}>
-            Published Date :<strong>October 16, 2018</strong>
+            Published Date :
+            <span className={style.spantext}>{formatDate(book.publicationDate)}</span>
           </p>
           <p className={style.info}>
-            Pages :<strong> 544</strong>
+            Pages :<span className={style.spantext}>{book.nbPages}</span>
           </p>
           <p className={style.info}>
-            ISBN :<strong>0735211302</strong>
+            ISBN :<span className={style.spantext}>{book.ISBN}</span>
           </p>
           <p className={style.info}>
-            Atomic Habits will reshape the way you think about progress and
-            success, and give you the tools and strategies you need to transform
-            your habits- -whether you are a team looking to win a championship,
-            an organization hoping to redefine an industry, or simply an
-            individual who wishes to quit smoking, lose weight, reduce stress,
-            or achieve any other goal.
+            {book.description}
           </p>
         </article>
       </div>
       <h4 className={style.suggestedBookTitle}>Readers also enjoyed</h4>
       <aside className={style.suggestedBook}>
-        <BookCard />
-        <BookCard />
-        <BookCard />
-        <BookCard />
-        <BookCard />
-        <BookCard />
+      {books.map((item, id) => (
+          <div key={id}>
+            <Link
+              to="/SingleBook"
+              state= {{ book: item }}
+            >
+              <BookCard isSmall={true} book={item}/>
+            </Link>
+          </div>
+        ))}
       </aside>
     </section>
   );

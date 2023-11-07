@@ -15,7 +15,9 @@ function Contents() {
   useEffect(() => {
     async function fetchData() {
       try {
-        const response = await axios.get("http://localhost:4000/api/books/limitedBooks?limit=6");
+        const response = await axios.get(
+          "http://localhost:4000/api/books/limitedBooks?limit=6"
+        );
         // console.log(response.data);
         setBook(response.data);
       } catch (error) {
@@ -32,7 +34,10 @@ function Contents() {
       <div className={contentsStyle.imageContainer}>
         {book.map((item, id) => (
           <div key={id} className={contentsStyle.bookContainer}>
-            <Link to={'/SingleBook'}>
+            <Link
+              to="/SingleBook"
+              state= {{ book: item }}
+            >
               <button className={contentsStyle.imageButton}>
                 <img
                   src={`http://localhost:4000/images/${item.image}`}

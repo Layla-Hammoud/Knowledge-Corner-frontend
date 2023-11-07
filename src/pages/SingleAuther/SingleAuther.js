@@ -1,55 +1,94 @@
 import BookCard from "../../components/BookCard/BookCard";
-import BookCover from "../../assets/images/james-clear-headshot-v1-e1538685972972.jpg";
 import style from "./SingleAuthor.module.css";
 import Stars from "../../components/Stars/Stars";
+import { useLocation, Link } from "react-router-dom";
+import { useEffect,useState } from "react";
+import axios from "axios";
+// import axios from "axios";
 function SingleAuther() {
-  let rating = 2;
+  const location = useLocation();
+  const [books, setBooks] = useState([]);
+  const author = location.state && location.state.author;
+
+  useEffect(() => {
+    async function fetchData() {
+      try {
+        const response = await axios.get(
+          "http://localhost:4000/api/books/limitedBooks?limit=6"
+        );
+        setBooks(response.data);
+      } catch (error) {
+        console.error("Error:", error);
+      }
+    }
+    fetchData()
+  }, []);
+
+  function formatDate(inputDate) {
+    const date = new Date(inputDate);
+    const formattedDate = date.toISOString().split("T")[0];
+
+    return formattedDate;
+  }
+
   return (
-    <section>
+    <section className={style.singleAuthorContainer}>
       <div className={style.mainInfoContainer}>
         <article className={style.imgContainer}>
-          <img className={style.image} src={BookCover} alt="AuthorPhoto" />
-          <div className={style.StarSingleContainer}> 
-            {[1, 2, 3, 4, 5].map((star) => (
-              <Stars key={star} stars={star} rating={rating}/>
-            ))}
-          </div>
+          <img className={style.image} src={`http://localhost:4000/images/${author.image}`} alt="AuthorPhoto" />
+          {author && author.rating ? (
+            <div className={style.StarSingleContainer}>
+              {[1, 2, 3, 4, 5].map((star) => (
+                <Stars key={star} stars={star} rating={author.rating} />
+              ))}
+            </div>
+          ) : (
+            null
+          )}
         </article>
         <article className={style.infoContainer}>
-          <h3 className={style.info}>James Clear</h3>
+        <h3 className={style.info}>
+          {author ? `${author.firstName} ${author.lastName}` : "Author Not Found"}
+        </h3>
+        <p className={style.info}>{author ? author.biography : "Biography Not Available"}</p>
+        {author && author.dob ? (
           <p className={style.info}>
-            James Clear is known for his expertise in the field of habit
-            formation, decision-making, and continuous improvement. He is an
-            author, speaker, and productivity expert. His book, "Atomic Habits,"
-            focuses on the science and psychology of habit formation and
-            provides practical insights into how small changes can lead to
-            remarkable personal and professional transformations.
+            Birth Date : <span className={style.spantext}>{formatDate(author.dob)}</span>
           </p>
+        ) : null}
+        {author && author.nationality ? (
           <p className={style.info}>
-          Birth Date :<strong>November 22, 1983</strong>{" "}
+            Nationality : <span className={style.spantext}>{author.nationality}</span>
           </p>
+        ) : null}
+        {author && author.twitterLink ? (
           <p className={style.info}>
-          Born :<strong> Hamilton, Ohio, US</strong>
+            Twitter : <span className={style.spantext}>{author.twitterLink}</span>
           </p>
+        ) : null}
+        {author && author.blogLink ? (
           <p className={style.info}>
-          Twitter :<strong>JamesClear</strong>
+            Website : <span className={style.spantext}>{author.blogLink}</span>
           </p>
-          <p className={style.info}>
-          Website :<strong>http://jamesclear.com</strong>
-          </p>
-          <p className={style.info}>
-          LinkedIn :<strong>JamesClear</strong>
-          </p>
+        ) : null}
+        {author && author.linkedinLink?(
+        <p className={style.info}>
+          LinkedIn : <span className={style.spantext}></span>
+        </p>):''}
         </article>
       </div>
-      <h4 className={style.suggestedBookTitle}>More of James Clear books</h4>
+      <h4 className={style.suggestedBookTitle}>More books</h4>
       <aside className={style.suggestedBook}>
-        <BookCard />
-        <BookCard />
-        <BookCard />
-        <BookCard />
-        <BookCard />
-        <BookCard />
+      {books.map((item, id) => (
+          <div key={id}>
+            <Link
+              to="/SingleBook"
+              state= {{ book: item }}
+            >
+              <BookCard isSmall={true} book={item}/>
+            </Link>
+          </div>
+        ))}
       </aside>
     </section>
   );

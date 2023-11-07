@@ -4,6 +4,7 @@ import filter from "../../assets/icons/filter.png";
 import axios from "axios";
 import magnifire from "../../assets/icons/magnifire.jpeg";
 import TemAuthorCard from "./TemAuthorCard";
+import { Link } from "react-router-dom";
 const AllAuthors = () => {
   const [menuOpen, setMenuOpen] = useState(false);
   const [searchInput, setSearchInput] = useState("");
@@ -18,7 +19,7 @@ const AllAuthors = () => {
     axios
       .get("http://localhost:4000/api/authors")
       .then((res) => {
-        console.log(res.data);
+        // console.log(res.data);
         setAuthors(res.data);
       })
       .catch((err) => console.log(err));
@@ -73,13 +74,16 @@ const AllAuthors = () => {
           `}
         ></div> */}
         <div className={AllBooksStyle.booksList}>
-          {authorsFiltred.map((author) => (
+          {authorsFiltred.map((author) => {
+            return(
+            <Link to="/SingleAuthor" state={{ author: author }}>
             <TemAuthorCard
               authorName={`${author.firstName} ${author.lastName} `}
               image={author.image}
               rating={author.rating}
             />
-          ))}
+            </Link>)
+          })}
         </div>
       </div>
     </div>

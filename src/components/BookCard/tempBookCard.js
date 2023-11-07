@@ -1,4 +1,4 @@
-import { NavLink } from "react-router-dom";
+
 
 import AllBooksStyle from "../../components/AllBooks/AllBooks.module.css";
 
@@ -8,14 +8,11 @@ export default function TempBookCard(props) {
 
   return (
     <figure className={AllBooksStyle.figure}>
-      <NavLink to="/SingleBook">
         <img
           src={`http://localhost:4000/images/${image}`}
           alt="Book cover"
           className={AllBooksStyle.image}
         />
-      </NavLink>
-
       <figcaption className={AllBooksStyle.figcaption}>
         <p>
           <strong>{bookTitle}</strong>

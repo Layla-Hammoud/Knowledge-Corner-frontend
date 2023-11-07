@@ -1,4 +1,3 @@
-import { NavLink } from "react-router-dom";
 import AllBooksStyle from "../../components/AllBooks/AllBooks.module.css";
 
 function TemAuthorCard(props) {
@@ -6,13 +5,11 @@ function TemAuthorCard(props) {
   // console.log(authorId)
   return (
     <figure className={AllBooksStyle.figure}>
-      <NavLink to={"/SingleAuthor"}>
         <img
           src={`http://localhost:4000/images/${image}`}
           alt="Book cover"
           className={AllBooksStyle.image}
         />
-      </NavLink>
 
       <figcaption className={AllBooksStyle.figcaption}>
         <p> {authorName}</p>
