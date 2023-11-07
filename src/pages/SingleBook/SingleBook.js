@@ -50,7 +50,7 @@ function SingleBook() {
     fetchData()
     fetchAuthorData()
     fetchCategoryData()
-  }, []);
+  }, [book]);
 
   function formatDate(inputDate) {
     const date = new Date(inputDate);
