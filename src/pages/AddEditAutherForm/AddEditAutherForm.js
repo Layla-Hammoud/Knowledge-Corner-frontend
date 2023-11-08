@@ -80,7 +80,7 @@ function AddEditAutherForm() {
         })
         .catch((error) => {
           console.error("Error while making the request:", error);
-          handleErrorAlert(error.message);
+          handleErrorAlert(error.response.data.error);
         });
     } else if (type === "Edit") {
       showWaitingToast();
@@ -92,7 +92,7 @@ function AddEditAutherForm() {
         })
         .catch((error) => {
           console.error("Error while making the request:", error);
-          handleErrorAlert(error.message);
+          handleErrorAlert(error.response.data.error);
         });
     }
   };

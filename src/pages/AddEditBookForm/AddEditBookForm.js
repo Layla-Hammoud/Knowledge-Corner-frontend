@@ -82,7 +82,7 @@ function AddEditBookForm() {
         })
         .catch((error) => {
           console.error("Error while making the request:", error);
-          handleErrorAlert(error.message);
+          handleErrorAlert(error.response.data.error);
         });
     } else if (type === "Edit") {
       console.log(formData);
@@ -95,7 +95,7 @@ function AddEditBookForm() {
         })
         .catch((error) => {
           console.error("Error while making the request:", error);
-          handleErrorAlert(error.message);
+          handleErrorAlert(error.response.data.error);
         });
     }
   };
