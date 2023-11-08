@@ -4,7 +4,6 @@ import AllBooksStyle from "../../components/AllBooks/AllBooks.module.css";
 
 export default function TempBookCard(props) {
   const { bookTitle, image, author, rating, category } = props;
-  // console.log(authorId)
 
   return (
     <figure className={AllBooksStyle.figure}>

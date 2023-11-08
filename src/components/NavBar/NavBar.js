@@ -7,7 +7,14 @@ import navBarStyle from "./navbar.module.css";
 
 const NavBar = () => {
   const [menuOpenn, setMenuOpenn] = useState(false);
-  const [isActive, setActive] = useState([false, false, false, false]);
+  const [isActive, setActive] = useState([
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+  ]);
   const [isResponsive, setIsResponsive] = useState(window.innerWidth <= 480);
 
   const handleSearch = () => {
@@ -34,7 +41,7 @@ const NavBar = () => {
         <div className={navBarStyle.logoContainer}>
           <NavLink
             onClick={() => {
-              setActive([true, false, false, false]);
+              setActive([true, false, false, false, false, false]);
             }}
             to={"./"}
           >
@@ -63,7 +70,7 @@ const NavBar = () => {
           <li>
             <NavLink
               onClick={() => {
-                setActive([true, false, false, false]);
+                setActive([true, false, false, false, false, false]);
               }}
               className={`${navBarStyle.navLi} ${
                 isActive[0] ? navBarStyle.active : ""
@@ -76,7 +83,7 @@ const NavBar = () => {
           <li>
             <NavLink
               onClick={() => {
-                setActive([false, true, false, false]);
+                setActive([false, true, false, false, false, false]);
               }}
               className={`${navBarStyle.navLi} ${
                 isActive[1] ? navBarStyle.active : ""
@@ -89,7 +96,7 @@ const NavBar = () => {
           <li>
             <NavLink
               onClick={() => {
-                setActive([false, false, true, false]);
+                setActive([false, false, true, false, false, false]);
               }}
               className={`${navBarStyle.navLi} ${
                 isActive[2] ? navBarStyle.active : ""
@@ -102,7 +109,7 @@ const NavBar = () => {
           <li>
             <NavLink
               onClick={() => {
-                setActive([false, false, false, true]);
+                setActive([false, false, false, true, false, false]);
               }}
               className={`${navBarStyle.navLi} ${
                 isActive[3] ? navBarStyle.active : ""
@@ -112,8 +119,21 @@ const NavBar = () => {
               About Us
             </NavLink>
           </li>
+
+          <li>
+            <NavLink
+              onClick={() => {
+                setActive([false, false, false, false, true, false]);
+              }}
+              className={`${navBarStyle.navLi} ${
+                isActive[4] ? navBarStyle.active : ""
+              } `}
+              // to={"./"}
+            >
+              Log In
+            </NavLink>
+          </li>
         </ul>
-        <button className={navBarStyle.loginBtnNav}> Log In</button>
       </nav>
     </div>
   );

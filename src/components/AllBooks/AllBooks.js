@@ -6,7 +6,7 @@ import magnifire from "../../assets/icons/magnifire.jpeg";
 import TempBookCard from "../BookCard/tempBookCard";
 
 const AllBooks = () => {
-  const [menuOpen, setMenuOpen] = useState(false);
+  const [menuOpen, setMenuOpen] = useState(true);
   const [books, setBooks] = useState([]);
   const [authors, setAuthors] = useState({});
   const [categories, setCategories] = useState([]);
@@ -14,11 +14,10 @@ const AllBooks = () => {
   const [checkboxes, setCheckboxes] = useState({});
   const [categoriesMap, setCategoriesMap] = useState({});
   const [searchInput, setSearchInput] = useState("");
-
+  const [isLoading, setIsLoading] = useState(true);
   // This function handles the click event for showing/hiding the category filter.
   const handleClick = () => {
     setMenuOpen(!menuOpen);
-    console.log("clicked");
   };
 
   // Fetch categories and books on component load.
@@ -27,6 +26,7 @@ const AllBooks = () => {
       .get("http://localhost:4000/api/categories")
       .then((response) => {
         setCategories(response.data);
+        setIsLoading(false);
         const initialCheckboxes = {};
         response.data.forEach((category) => {
           initialCheckboxes[category._id] = false;
@@ -41,6 +41,7 @@ const AllBooks = () => {
       .get("http://localhost:4000/api/books")
       .then((res) => {
         setBooks(res.data);
+        setIsLoading(false);
         const authorIds = res.data.map((book) => book.authorId);
         fetchAuthors(authorIds);
 
@@ -63,6 +64,7 @@ const AllBooks = () => {
           authorMap[author._id] = `${author.firstName} ${author.lastName}`;
         });
         setAuthors(authorMap);
+        setIsLoading(false);
       })
       .catch((err) => console.log(err));
   };
@@ -137,12 +139,13 @@ const AllBooks = () => {
 
   return (
     <div>
+      <h1 className={AllBooksStyle.titleh1}>Books Collection</h1>
       <form className={AllBooksStyle.bookSearch}>
         <input
           id="search"
           className={AllBooksStyle.inputSearch}
           type="text"
-          placeholder="Search For Books"
+          placeholder="Search For Book Name"
           value={searchInput}
           onChange={handleSearchInputChange}
         />
@@ -150,56 +153,60 @@ const AllBooks = () => {
           <img src={magnifire} alt="search img" width="25" height="20" />
         </button>
       </form>
-
-      <div className={AllBooksStyle.filterCategories}>
-        <input
-          type="text"
-          id="Categories"
-          name="Categories"
-          value="Search for Categories"
-        />
-        <button for="#Categories" onClick={handleClick}>
-          <img src={filter} alt="filter" />
-        </button>
-      </div>
-
-      <div className={AllBooksStyle.booksContainer}>
-        <div
-          className={`${AllBooksStyle.booksCategory} ${
-            menuOpen ? AllBooksStyle.open : ""
-          }`}
-        >
-          <h2>Categories</h2>
-          {categories.map((category, index) => (
-            <div className={AllBooksStyle.bookCheckbox} key={index}>
-              <input
-                type="checkbox"
-                id={category._id}
-                name={category.name}
-                value={category._id}
-                checked={checkboxes[category._id] || false}
-                onChange={handleOnChange}
-              />
-              <label htmlFor={category._id}>{category.name}</label>
-              <br />
-            </div>
-          ))}
-        </div>
-
-        <div className={AllBooksStyle.booksList}>
-          {filteredBooks.map((book) => (
-            <TempBookCard
-              image={book.image}
-              author={authors[book.authorId]}
-              bookTitle={book.title}
-              rating={book.rating}
-              category={categoriesMap[book.categoryId]}
+      {isLoading ? (
+        <h1>Loading...</h1>
+      ) : (
+        <>
+          <div className={AllBooksStyle.filterCategories}>
+            <input
+              type="text"
+              id="Categories"
+              name="Categories"
+              value="Search for Categories"
             />
-          ))}
-        </div>
-      </div>
+            <button for="#Categories" onClick={handleClick}>
+              <img src={filter} alt="filter" />
+            </button>
+          </div>
+
+          <div className={AllBooksStyle.booksContainer}>
+            <div
+              className={`${AllBooksStyle.booksCategory} ${
+                menuOpen ? AllBooksStyle.open : ""
+              }`}
+            >
+              <h2>Categories</h2>
+              {categories.map((category, index) => (
+                <div className={AllBooksStyle.bookCheckbox} key={index}>
+                  <input
+                    type="checkbox"
+                    id={category._id}
+                    name={category.name}
+                    value={category._id}
+                    checked={checkboxes[category._id] || false}
+                    onChange={handleOnChange}
+                  />
+                  <label htmlFor={category._id}>{category.name}</label>
+                  <br />
+                </div>
+              ))}
+            </div>
+
+            <div className={AllBooksStyle.booksList}>
+              {filteredBooks.map((book) => (
+                <TempBookCard
+                  image={book.image}
+                  author={authors[book.authorId]}
+                  bookTitle={book.title}
+                  rating={book.rating}
+                  category={categoriesMap[book.categoryId]}
+                />
+              ))}
+            </div>
+          </div>
+        </>
+      )}
     </div>
   );
 };
-
 export default AllBooks;

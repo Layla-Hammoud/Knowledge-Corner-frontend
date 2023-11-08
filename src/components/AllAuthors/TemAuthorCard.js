@@ -3,7 +3,7 @@ import AllBooksStyle from "../../components/AllBooks/AllBooks.module.css";
 
 function TemAuthorCard(props) {
   const { authorName, image, rating } = props;
-  // console.log(authorId)
+
   return (
     <figure className={AllBooksStyle.figure}>
       <NavLink to={"/SingleAuthor"}>
