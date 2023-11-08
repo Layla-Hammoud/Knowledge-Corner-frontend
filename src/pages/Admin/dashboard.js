@@ -2,6 +2,7 @@ import React ,{useEffect, useState} from 'react'
 // import AdminNavbar from './AdminNavbar/adminNavbar'
 import AdminAllBooks from "./AdminRead/adminAllBooks";
 import { Route, Routes } from "react-router-dom";
+import { toast, ToastContainer } from "react-toastify";
 
 import AdminAllAuthors from './AdminRead/adminAllAuthors'
 import AdminAllCategories from './AdminRead/adminAllCategories';
@@ -18,11 +19,27 @@ function Dashboard() {
   const [authors,setAuthors]=useState([])
   const [categories,setCategories]=useState([])
 
+
+  const handleDeleteAlert =()=>{
+    const message = "The Book is deleted";
+    toast.success(message,{
+      position: "top-right",
+      autoClose: 3000,
+      hideProgressBar: false,
+      closeOnClick: true,
+      pauseOnHover: true,
+      draggable: true,
+    })
+  }
+
+
+
   const handleDeleteBook=(bookId)=>{
     axios.delete(`http://localhost:4000/api/books/${bookId}`)
     .then((response) =>{
       console.log('Book deleted successfully')
-      // Filter the books to exclude the deleted book
+      handleDeleteAlert();
+      
       const updatedBooks = books.filter((book) => book._id !== bookId);
       setBooks(updatedBooks);
     })
@@ -35,7 +52,7 @@ function Dashboard() {
     axios.delete(`http://localhost:4000/api/authors/${authorId}`)
     .then((response) =>{
       console.log('Author deleted successfully')
-      // Filter the authors to exclude the deleted author
+     
       const updatedAuthors = authors.filter((author) => author._id !== authorId);
       setAuthors(updatedAuthors);
     })
@@ -82,6 +99,7 @@ function Dashboard() {
   return (
     <div>
 
+      <ToastContainer/>
       <Routes>
 
         <Route exact path='/' element={<AdminOutlet handleClick={handleClick}/>}>

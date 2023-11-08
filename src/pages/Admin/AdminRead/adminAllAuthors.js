@@ -7,6 +7,7 @@ function adminAllAuthors({ authors , handleDeleteAuthor }) {
 
   return (
     <div className={adminAllBooksStyle.allBooks}>
+      <div className={adminAllBooksStyle.overflow}>
       <table>
         <thead>
           <tr>
@@ -16,6 +17,7 @@ function adminAllAuthors({ authors , handleDeleteAuthor }) {
             <th>Birth Date</th>
             <th>Nationality</th>
             <th>Rating</th>
+            <th>Actions</th>
           </tr>
         </thead>
         <tbody>
@@ -34,15 +36,17 @@ function adminAllAuthors({ authors , handleDeleteAuthor }) {
                 </button>
               </Link>
                 <button className={adminAllBooksStyle.updateDelete}>
-                  <img src={x} alt="delete" onClick={() => {
+                  <img src={x} alt="delete"  />
+                  {/* {onClick={() => {
                         handleDeleteAuthor(author._id);
-                      }} />
+                      }}} */}
                 </button>
               </td>
             </tr>
           ))}
         </tbody>
       </table>
+      </div>
     </div>
   );
 }

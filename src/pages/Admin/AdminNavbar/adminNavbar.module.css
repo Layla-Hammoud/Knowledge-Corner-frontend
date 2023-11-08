@@ -2,9 +2,10 @@
     display: flex;
     flex-direction: column;
     row-gap: 20px;
-    margin-top: 20px;
-    justify-content: center;
-    align-items: center;
+}
+
+.dashboardtitle{
+    margin: 30px auto;
 }
 
 .test{
@@ -14,8 +15,6 @@
 .outerDiv{
     display: flex;
     column-gap: 30px;
-    justify-content: center;
-    align-items: center;
     margin: 0 auto;
 }
 
@@ -51,14 +50,13 @@
 }
 
 .innerDiv > img{
-    width: 20%;
+    width: 50px;
 }
 
 .addContainer{
     display: flex;
     column-gap: 30px;
     justify-content: center;
-    align-items: center;
 }
 .addMVC{
     text-decoration: none;
@@ -72,23 +70,32 @@
     border-radius: 20px;
     width: fit-content;
     cursor: pointer;
+    transition: background-color 0.3s, color 0.3s, transform 0.3s;
+}
+
+.addButton:hover{
+    transform: scale(1.05);
+    opacity: 0.5;
 }
 
 @media only screen and (max-width: 700px){
 
     .navbarComponent{
-        flex-direction: row;
+        flex-direction: column;
         justify-content: center;
         align-items: center;
         column-gap: 2px;
         margin: 20px 5px;
     }
 
-    .outerDiv{
-        flex-direction: column;
+    .addContainer{
         row-gap: 20px;
+    }
+
+    .outerDiv{
         justify-content: center;
         align-items: center;
+        row-gap: 20px;
     }
 
     .innerDiv{
@@ -101,15 +108,32 @@
         font-size: 100%;
     }
 
-    .addContainer{
-        flex-direction: column;
-        width: 200px;
-        row-gap: 20px;
-    }
-
     .addButton{
         font-size: 80%;
-        width: 80%;
+        width: 100px;
         padding: 8px;
+    }
+}
+
+@media only screen and (max-width: 500px){
+    .innerDiv > img{
+        width: 25px;
+    }
+    .threeButton{
+        font-size: 100%;
+    }
+}
+
+@media only screen and (max-width: 400px){
+    .navbarComponent{
+        flex-direction: column;
+    }
+
+    .outerDiv{
+        flex-direction: column;
+    }
+
+    .addContainer{
+        flex-direction: column;
     }
 }
