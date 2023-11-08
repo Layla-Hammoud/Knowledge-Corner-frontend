@@ -3,14 +3,16 @@ import adminAllBooksStyle from "./adminAllBooks.module.css";
 import x from "../../../assets/icons/862px-Delete-button 1.svg";
 import update from "../../../assets/icons/Vector (4).svg";
 
-function adminAllCategories({ categories ,handleDeleteCategory}) {
+function adminAllCategories({ categories }) {
   return (
     <div className={adminAllBooksStyle.allBooks}>
+      <div className={adminAllBooksStyle.overflow}>
       <table>
         <thead>
           <tr>
             <th>S.N</th>
             <th>Name</th>
+            <th>Actions</th>
           </tr>
         </thead>
         <tbody>
@@ -22,9 +24,10 @@ function adminAllCategories({ categories ,handleDeleteCategory}) {
                 <button className={adminAllBooksStyle.updateDelete} >
                   <img src={update} alt="update" />
                 </button>
-                <button className={adminAllBooksStyle.updateDelete} onClick={() => {
+                <button className={adminAllBooksStyle.updateDelete} >
+                  {/* {onClick={() => {
                         handleDeleteCategory(category._id);
-                      }}>
+                      }}} */}
                   <img src={x} alt="delete" />
                 </button>
               </td>
@@ -32,6 +35,7 @@ function adminAllCategories({ categories ,handleDeleteCategory}) {
           ))}
         </tbody>
       </table>
+      </div>
     </div>
   );
 }

@@ -8,7 +8,7 @@
     width: var(--container-width);
     line-height: var(--line-height);
     font-size: var(--font-size);
-    height: 81vh;
+    height: 82vh;
 }
 .active {
   height: 100%;
@@ -20,12 +20,7 @@
     display: flex;
     flex-direction: column;
     
-    row-gap: 120px;
-}
-
-.libraryIntro > p:first-child{
-    font-size: 50px;
-    font-weight: bold;
+    row-gap: 80px;
 }
 
 .heroImage{
@@ -36,9 +31,7 @@
 .heroPara{
   font-size: 25px;
   padding: 10px;
-  width: 70%;
-  border-left: 1px solid rgb(209, 205, 205);
-  border-bottom: 1px solid rgb(209, 205, 205);
+  width: 80%;
   border-radius: 5px;
 }
 
@@ -61,6 +54,12 @@
     opacity: 0.5;
   }
 
+  @media (max-width:1400px) {
+    .libraryIntro{
+      row-gap: 20px;
+  }
+  }
+
 
 
   @media (max-width: 1100px) {
@@ -78,12 +77,16 @@
       row-gap: 40px;
     }
 
-    .libraryIntro > p:first-child{
+    .libraryIntro > h1{
+      text-align: center;
+    }
+
+    .libraryIntro > p{
       text-align: center;
     }
   
     .heroImage {
-      display: none; /* Hide the image for smaller screens */
+      display: none; 
     }
 
     .heroPara{
@@ -103,7 +106,7 @@
     }
 
     .exploreButton{
-      padding: 10px;
+      padding: 15px;
     }
   }
 
@@ -121,7 +124,7 @@
       font-size: 22px;
     }
     .exploreButton{
-      padding: 6px;
+      padding: 10px;
     }
   }
 

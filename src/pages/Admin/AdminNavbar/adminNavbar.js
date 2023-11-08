@@ -8,6 +8,7 @@ import { Link } from "react-router-dom";
 function adminNavbar({ handleClick }) {
   return (
     <div className={adminNavbarStyle.navbarComponent}>
+      <h1 className={adminNavbarStyle.dashboardtitle}>Dashboard</h1>
       <div className={adminNavbarStyle.outerDiv}>
         <div onClick={handleClick}>
           <Link
@@ -37,18 +38,21 @@ function adminNavbar({ handleClick }) {
       </div>
 
       <div className={adminNavbarStyle.addContainer}>
-        <Link
-          to={"/dashboard/adminAddAuthor/Add"}
-          className={adminNavbarStyle.addMVC}
-        >
-          <button className={adminNavbarStyle.addButton}>Add Author</button>
-        </Link>
+        
         <Link
           to={"/dashboard/adminAddBook/Add"}
           className={adminNavbarStyle.addMVC}
         >
           <button className={adminNavbarStyle.addButton}>Add Book</button>
         </Link>
+
+        <Link
+          to={"/dashboard/adminAddAuthor/Add"}
+          className={adminNavbarStyle.addMVC}
+        >
+          <button className={adminNavbarStyle.addButton}>Add Author</button>
+        </Link>
+
         <Link
           to={"/dashboard/adminAddCategory"}
           className={adminNavbarStyle.addMVC}

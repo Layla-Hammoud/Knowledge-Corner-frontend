@@ -5,6 +5,7 @@
     display: flex;
     flex-direction: column;
     row-gap: 20px;
+    padding: 20px;
 }
 
 
@@ -28,7 +29,11 @@
 }
 .menuListContainer > ul > li{
     list-style-type: none;
-    padding: 10px;
+    padding: 15px 0;
+}
+
+.menuListContainer > ul > h3{
+    font-size: 25px;
 }
 
 .menuListContainer > ul > li > a{
@@ -91,11 +96,16 @@ hr{
 @media only screen and (max-width: 700px){
     .menuListContainer{
         flex-direction: column;
+        row-gap: 20px;
     }
 
     .menuListContainer > ul > li{
         list-style-type: none;
         padding: 5px;
+        text-align: center;
+    }
+
+    .menuListContainer > ul > h3{
         text-align: center;
     }
 
@@ -123,5 +133,8 @@ hr{
 
     .menuListContainer > ul > h1{
         font-size: 18px;
+    }
+    .copyRights{
+        font-size: 12px;
     }
 }

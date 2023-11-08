@@ -4,8 +4,8 @@
     align-items: center;
     justify-content: center;
     height: 100vh;
-    background-color: #FF5733; /* Custom background color */
-    color: white; /* Text color */
+    background-color: #FF5733; 
+    color: white; 
   }
   
   .errorMessage {

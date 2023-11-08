@@ -18,20 +18,20 @@ function Contents() {
         const response = await axios.get(
           "http://localhost:4000/api/books/limitedBooks?limit=6"
         );
-        // console.log(response.data);
+        
         setBook(response.data);
       } catch (error) {
         console.error("Error:", error);
       }
     }
 
-    fetchData(); // Call the fetchData function here
+    fetchData(); 
   }, []);
 
   return (
     <div className={contentsStyle.contentsComponent}>
-      <h1>Millions of Books Available for you , Anytime & Anywhere</h1>
-      <div className={contentsStyle.imageContainer}>
+      <h2>Millions of Books Available for you , Anytime & Anywhere</h2>
+      <section className={contentsStyle.imageContainer}>
         {book.map((item, id) => (
           <div key={id} className={contentsStyle.bookContainer}>
             <Link
@@ -49,63 +49,63 @@ function Contents() {
             </Link>
           </div>
         ))}
-      </div>
+      </section>
 
-      <h1>Services</h1>
+      <h2>Services</h2>
       <div className={contentsStyle.borderComponent}>
-        <div className={contentsStyle.singleBorder}>
+        <section className={contentsStyle.singleBorder}>
           <img src={image5} alt="satisfation" />
           <h3>User Ratings and reviews</h3>
           <p>
             Discover what other users are saying about our services and share
             your own experiences.
           </p>
-        </div>
+        </section>
 
-        <div className={contentsStyle.singleBorder}>
+        <section className={contentsStyle.singleBorder}>
           <img src={image6} alt="social-media" />
           <h3>User Recommendations</h3>
           <p>
             Explore personalized recommendations from our community to enhance
             your experience.
           </p>
-        </div>
+        </section>
 
-        <div className={contentsStyle.singleBorder}>
+        <section className={contentsStyle.singleBorder}>
           <img src={image7} alt="online-library" />
           <h3>Extensive Digital Library</h3>
           <p>
             Gain access to a vast online library with a wealth of digital
             resources at your fingertips.
           </p>
-        </div>
+        </section>
 
-        <div className={contentsStyle.singleBorder}>
+        <section className={contentsStyle.singleBorder}>
           <img src={image8} alt="book-2" />
           <h3>Educational Resources</h3>
           <p>
             Access a wide range of educational materials and tools to support
             your learning journey.
           </p>
-        </div>
+        </section>
 
-        <div className={contentsStyle.singleBorder}>
+        <section className={contentsStyle.singleBorder}>
           <img src={image9} alt="authorization" />
           <h3>Author Profiles</h3>
           <p>
             Dive into the profiles of talented authors and get to know the
             creative minds behind your favorite books.
           </p>
-        </div>
+        </section>
 
-        <div className={contentsStyle.singleBorder}>
+        <section className={contentsStyle.singleBorder}>
           <img src={image10} alt="check-list" />
           <h3>Reading Lists</h3>
           <p>
             Create and explore reading lists to help you organize and discover
             new books tailored to your interests.
           </p>
-        </div>
+        </section>
       </div>
     </div>
   );

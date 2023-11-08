@@ -1,14 +1,17 @@
 .allBooks {
-  /* display: flex;
-  flex-wrap: wrap;
-  justify-content: center;
-  align-items: center; */
-  /* margin: 0 auto; */
   margin-top: 50px;
 }
 
+
+
+.overflow{
+  height: 500px;
+  width: fit-content;
+  overflow-y: scroll;
+  margin: 0 auto;
+}
+
 table {
-  /* width: 100%; */
   margin: 0 auto;
   border-collapse: collapse;
 }
@@ -24,13 +27,10 @@ tr > td {
   text-align: center;
   font-size: 15px;
   border-bottom: 1px solid rgb(199, 195, 195);
-  /* padding: 15px; */
 }
 
 .buttonContainer {
   display: flex;
-  /* column-gap: 10px; */
-  /* justify-content: center; */
 }
 
 .updateDelete {
@@ -61,6 +61,13 @@ tr > td {
   tr > th {
     width: auto;
     padding: 10px;
+  }
+
+  .overflow{
+    height: 500px;
+    width: 90%;
+    overflow-y: scroll;
+    margin: 0 auto;
   }
 }
 

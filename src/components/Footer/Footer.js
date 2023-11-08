@@ -22,21 +22,21 @@ const Footer = () => {
 
                 <div className={footerStyle.menuListContainer}>
                     <ul>
-                        <h1>Platform</h1>
+                        <h3>Platform</h3>
                         <li><Link to={"/"}>Home</Link></li>
                         <li><Link to={"./AllBooks"}>All Books</Link></li>
                         <li><Link to={"./AllAuthors"}>All Authors</Link></li>
                     </ul>
 
                     <ul>
-                        <h1>Policy</h1>
+                        <h3>Policy</h3>
                         <li>Privacy</li>
                         <li>Security</li>
                         <li>Terms</li>
                     </ul>
 
                     <ul>
-                        <h1>Contact</h1>
+                        <h3>Contact</h3>
                         <li><img src={telephone} alt='phone number' className={footerStyle.phoneImage}/><span>+961 70 178 056</span></li>
                         <li><img src={location} alt='location' className={footerStyle.phoneImage}/><span>Tripoli , Lebanon</span></li>
                     </ul>
