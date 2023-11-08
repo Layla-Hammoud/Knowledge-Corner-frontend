@@ -73,25 +73,21 @@ function AddEditAutherForm() {
       showWaitingToast();
       axios
         .post("http://localhost:4000/api/authors", newFormData)
-        .then((response) => {
-          console.log("Request was successful:", response.data);
+        .then(() => {
           handleSuccessAlert();
           resetForm();
         })
         .catch((error) => {
-          console.error("Error while making the request:", error);
           handleErrorAlert(error.response.data.error);
         });
     } else if (type === "Edit") {
       showWaitingToast();
       axios
         .patch(`http://localhost:4000/api/authors/${author._id}`, newFormData)
-        .then((response) => {
-          console.log("Request was successful:", response.data);
+        .then(() => {
           handleSuccessAlert();
         })
         .catch((error) => {
-          console.error("Error while making the request:", error);
           handleErrorAlert(error.response.data.error);
         });
     }
