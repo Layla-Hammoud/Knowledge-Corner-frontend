@@ -1,17 +1,13 @@
 import React, { useState, useEffect } from "react";
 import AllBooksStyle from "../AllBooks/AllBooks.module.css";
-import filter from "../../assets/icons/filter.png";
+
 import axios from "axios";
 import magnifire from "../../assets/icons/magnifire.jpeg";
 import TemAuthorCard from "./TemAuthorCard";
 import { Link } from "react-router-dom";
 const AllAuthors = () => {
-  const [menuOpen, setMenuOpen] = useState(false);
   const [searchInput, setSearchInput] = useState("");
-  const handleClick = () => {
-    setMenuOpen(!menuOpen);
-    console.log("clicked"); // Toggle the menuOpen state
-  };
+  const [isLoading, setIsLoading] = useState(true);
 
   const [authors, setAuthors] = useState([]);
 
@@ -19,8 +15,8 @@ const AllAuthors = () => {
     axios
       .get("http://localhost:4000/api/authors")
       .then((res) => {
-        // console.log(res.data);
         setAuthors(res.data);
+        setIsLoading(false);
       })
       .catch((err) => console.log(err));
   }, []);
@@ -41,6 +37,7 @@ const AllAuthors = () => {
   const authorsFiltred = filterAuthorsByName(authors, searchInput);
   return (
     <div>
+      <h1 className={AllBooksStyle.titleh1}>Authors List</h1>
       <form className={AllBooksStyle.bookSearch}>
         <input
           id="search"
@@ -55,36 +52,26 @@ const AllAuthors = () => {
         </button>
       </form>
 
-      <div className={AllBooksStyle.filterCategories}>
-        <input
-          type="text"
-          id="Categories"
-          name="Categories "
-          value="Search for Categories"
-        />
-        <button for="#Categories" onClick={handleClick}>
-          <img src={filter} alt="filter" />
-        </button>
-      </div>
       <div>
-        {/* <div
-          // className={AllBooksStyle.booksCategory}
-          className={`${AllBooksStyle.booksCategory} 
-          ${menuOpen ? AllBooksStyle.open : ""}
-          `}
-        ></div> */}
-        <div className={AllBooksStyle.booksList}>
-          {authorsFiltred.map((author) => {
-            return(
-            <Link to="/SingleAuthor" state={{ author: author }}>
-            <TemAuthorCard
-              authorName={`${author.firstName} ${author.lastName} `}
-              image={author.image}
-              rating={author.rating}
-            />
-            </Link>)
-          })}
-        </div>
+        {isLoading ? (
+          <h1>Loading...</h1>
+        ) : (
+          <>
+            <div className={AllBooksStyle.booksList}>
+              {authorsFiltred.map((author) => {
+                return (
+                  <Link to="/SingleAuthor" state={{ author: author }}>
+                    <TemAuthorCard
+                      authorName={`${author.firstName} ${author.lastName} `}
+                      image={author.image}
+                      rating={author.rating}
+                    />
+                  </Link>
+                );
+              })}
+            </div>
+          </>
+        )}
       </div>
     </div>
   );
