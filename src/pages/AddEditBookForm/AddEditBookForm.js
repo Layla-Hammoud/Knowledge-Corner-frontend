@@ -75,27 +75,23 @@ function AddEditBookForm() {
       showWaitingToast();
       axios
         .post("http://localhost:4000/api/books", formData)
-        .then((response) => {
-          console.log("Request was successful:", response.data);
+        .then(() => {
           handleSuccessAlert();
           resetForm();
         })
         .catch((error) => {
           console.error("Error while making the request:", error);
-          handleErrorAlert(error.message);
+          handleErrorAlert(error.response.data.error);
         });
     } else if (type === "Edit") {
-      console.log(formData);
       showWaitingToast();
       axios
         .patch(`http://localhost:4000/api/books/${book._id}`, formData)
-        .then((response) => {
-          console.log("Request was successful:", response.data);
+        .then(() => {
           handleSuccessAlert();
         })
         .catch((error) => {
-          console.error("Error while making the request:", error);
-          handleErrorAlert(error.message);
+          handleErrorAlert(error.response.data.error);
         });
     }
   };
@@ -106,8 +102,8 @@ function AddEditBookForm() {
       .then((response) => {
         setAuthors(response.data);
       })
-      .catch((error) => {
-        console.error("Error in fetching:", error);
+      .catch(() => {
+        handleErrorAlert("Error while getting authors data");
       });
   }
 
@@ -117,8 +113,8 @@ function AddEditBookForm() {
       .then((response) => {
         setOptionCategory(response.data);
       })
-      .catch((error) => {
-        console.error("Error in fetching:", error);
+      .catch(() => {
+        handleErrorAlert("Error while getting categories data");
       });
   }
   useEffect(() => {
