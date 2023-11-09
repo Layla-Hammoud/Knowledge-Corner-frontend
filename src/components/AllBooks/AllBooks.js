@@ -147,7 +147,7 @@ const AllBooks = () => {
           id="search"
           className={AllBooksStyle.inputSearch}
           type="text"
-          placeholder="Search For Books"
+          placeholder="Search For Book Name"
           value={searchInput}
           onChange={handleSearchInputChange}
         />

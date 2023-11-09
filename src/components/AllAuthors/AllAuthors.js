@@ -43,7 +43,7 @@ const AllAuthors = () => {
           id="search"
           className={AllBooksStyle.inputSearch}
           type="text"
-          placeholder="Search For Books"
+          placeholder="Search For Author Name"
           value={searchInput}
           onChange={handleSearchInputChange}
         />
