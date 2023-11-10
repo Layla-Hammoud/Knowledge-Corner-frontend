@@ -35,7 +35,7 @@ function Dashboard() {
 
 
   const handleDeleteBook=(bookId)=>{
-    axios.delete(`http://localhost:4000/api/books/${bookId}`)
+    axios.delete(`${process.env.REACT_APP_PATH}/api/books/${bookId}`)
     .then((response) =>{
       console.log('Book deleted successfully')
       handleDeleteAlert();
@@ -49,7 +49,7 @@ function Dashboard() {
   }
 
   const handleDeleteAuthor=(authorId)=>{
-    axios.delete(`http://localhost:4000/api/authors/${authorId}`)
+    axios.delete(`${process.env.REACT_APP_PATH}/api/authors/${authorId}`)
     .then((response) =>{
       console.log('Author deleted successfully')
      
@@ -62,7 +62,7 @@ function Dashboard() {
   }
 
   const handleDeleteCategory=(categoryId)=>{
-    axios.delete(`http://localhost:4000/api/categories/${categoryId}`)
+    axios.delete(`${process.env.REACT_APP_PATH}/api/categories/${categoryId}`)
     .then((response)=>{
       console.log("Category deleted successfully")
 
@@ -78,9 +78,9 @@ function Dashboard() {
   const handleClick = async () => {
     try {
       const [booksResponse, authorsResponse,categoriesResponse] = await Promise.all([
-        axios.get('http://localhost:4000/api/books'),
-        axios.get('http://localhost:4000/api/authors'),
-        axios.get('http://localhost:4000/api/categories')
+        axios.get(`${process.env.REACT_APP_PATH}/api/books`),
+        axios.get(`${process.env.REACT_APP_PATH}/api/authors`),
+        axios.get(`${process.env.REACT_APP_PATH}/api/categories`)
       ]);
 
       setBooks(booksResponse.data);

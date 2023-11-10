@@ -12,7 +12,7 @@ function AddCategory() {
   const addCategory = (e) => {
     e.preventDefault();
     axios
-      .post("http://localhost:4000/api/categories", { name: categoryName })
+      .post(`${process.env.REACT_APP_PATH}/api/categories`, { name: categoryName })
       .then((response) => {
         console.log("Category created");
         setCategoryName("");

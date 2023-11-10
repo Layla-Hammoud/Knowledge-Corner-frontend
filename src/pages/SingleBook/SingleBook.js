@@ -16,7 +16,7 @@ function SingleBook() {
 
   function fetchAuthorData() {
     axios
-      .get(`http://localhost:4000/api/authors/${book.authorId}`)
+      .get(`${process.env.REACT_APP_PATH}/api/authors/${book.authorId}`)
       .then((response) => {
         setAuthor(response.data);
       })
@@ -27,7 +27,7 @@ function SingleBook() {
 
   function fetchCategoryData() {
     axios
-      .get(`http://localhost:4000/api/categories/${book.categoryId}`)
+      .get(`${process.env.REACT_APP_PATH}/api/categories/${book.categoryId}`)
       .then((response) => {
         setCategory(response.data);
       })
@@ -40,7 +40,7 @@ function SingleBook() {
     async function fetchData() {
       try {
         const response = await axios.get(
-          "http://localhost:4000/api/books/limitedBooks?limit=6"
+          `${process.env.REACT_APP_PATH}/api/books/limitedBooks?limit=6`
         );
         setBooks(response.data);
       } catch (error) {
@@ -64,7 +64,7 @@ function SingleBook() {
     <section className={style.singleBookContainer}>
       <div className={style.mainInfoContainer}>
         <article className={style.imgContainer}>
-          <img className={style.image} src={`http://localhost:4000/images/${book.image}`} alt="Book cover" />
+          <img className={style.image} src={`${process.env.REACT_APP_PATH}/images/${book.image}`} alt="Book cover" />
           <div className={style.StarSingleContainer}>
             {[1, 2, 3, 4, 5].map((star) => (
               <Stars key={star} stars={star} rating={book.rating} />

@@ -14,7 +14,7 @@ function SingleAuther() {
     async function fetchData() {
       try {
         const response = await axios.get(
-          "http://localhost:4000/api/books/limitedBooks?limit=6"
+          `${process.env.REACT_APP_PATH}/api/books/limitedBooks?limit=6`
         );
         setBooks(response.data);
       } catch (error) {
@@ -35,7 +35,7 @@ function SingleAuther() {
     <section className={style.singleAuthorContainer}>
       <div className={style.mainInfoContainer}>
         <article className={style.imgContainer}>
-          <img className={style.image} src={`http://localhost:4000/images/${author.image}`} alt="AuthorPhoto" />
+          <img className={style.image} src={`${process.env.REACT_APP_PATH}/images/${author.image}`} alt="AuthorPhoto" />
           {author && author.rating ? (
             <div className={style.StarSingleContainer}>
               {[1, 2, 3, 4, 5].map((star) => (

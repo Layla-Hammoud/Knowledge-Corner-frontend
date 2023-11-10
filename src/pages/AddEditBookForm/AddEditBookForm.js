@@ -74,7 +74,7 @@ function AddEditBookForm() {
     if (type === "Add") {
       showWaitingToast();
       axios
-        .post("http://localhost:4000/api/books", formData)
+        .post(`${process.env.REACT_APP_PATH}/api/books`, formData)
         .then(() => {
           handleSuccessAlert();
           resetForm();
@@ -86,7 +86,7 @@ function AddEditBookForm() {
     } else if (type === "Edit") {
       showWaitingToast();
       axios
-        .patch(`http://localhost:4000/api/books/${book._id}`, formData)
+        .patch(`${process.env.REACT_APP_PATH}/api/books/${book._id}`, formData)
         .then(() => {
           handleSuccessAlert();
         })
@@ -98,7 +98,7 @@ function AddEditBookForm() {
 
   function fetchAuthorData() {
     axios
-      .get("http://localhost:4000/api/authors")
+      .get(`${process.env.REACT_APP_PATH}/api/authors`)
       .then((response) => {
         setAuthors(response.data);
       })
@@ -109,7 +109,7 @@ function AddEditBookForm() {
 
   function fetchCategoryData() {
     axios
-      .get("http://localhost:4000/api/categories")
+      .get(`${process.env.REACT_APP_PATH}/api/categories`)
       .then((response) => {
         setOptionCategory(response.data);
       })

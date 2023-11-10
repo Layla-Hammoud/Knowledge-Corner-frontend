@@ -13,7 +13,7 @@ const AllAuthors = () => {
 
   useEffect(() => {
     axios
-      .get("http://localhost:4000/api/authors")
+      .get(`${process.env.REACT_APP_PATH}/api/authors`)
       .then((res) => {
         setAuthors(res.data);
         setIsLoading(false);

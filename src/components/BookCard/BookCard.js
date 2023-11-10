@@ -10,7 +10,7 @@ const BookCard = ({isSmall,book}) => {
   return (
     <>
       <figure className={style.figure} >
-        <img src={`http://localhost:4000/images/${book.image}`} alt="Book cover" className={style.image} style={size}/>
+        <img src={`${process.env.REACT_APP_PATH}/images/${book.image}`} alt="Book cover" className={style.image} style={size}/>
         <figcaption className={style.figcaption}>
           <p>
             <span>{book.title}</span>

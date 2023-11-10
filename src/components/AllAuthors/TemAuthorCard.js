@@ -6,7 +6,7 @@ function TemAuthorCard(props) {
   return (
     <figure className={AllBooksStyle.figure}>
         <img
-          src={`http://localhost:4000/images/${image}`}
+          src={`${process.env.REACT_APP_PATH}/images/${image}`}
           alt="Book cover"
           className={AllBooksStyle.image}
         />

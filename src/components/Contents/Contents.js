@@ -16,7 +16,7 @@ function Contents() {
     async function fetchData() {
       try {
         const response = await axios.get(
-          "http://localhost:4000/api/books/limitedBooks?limit=6"
+          `${process.env.REACT_APP_PATH}/api/books/limitedBooks?limit=6`
         );
         
         setBook(response.data);
@@ -40,7 +40,7 @@ function Contents() {
             >
               <button className={contentsStyle.imageButton}>
                 <img
-                  src={`http://localhost:4000/images/${item.image}`}
+                  src={`${process.env.REACT_APP_PATH}/images/${item.image}`}
                   alt={item.image}
                   className={contentsStyle.imageBook}
                 />

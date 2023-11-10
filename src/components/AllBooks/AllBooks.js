@@ -25,7 +25,7 @@ const AllBooks = () => {
   // Fetch categories and books on component load.
   useEffect(() => {
     axios
-      .get("http://localhost:4000/api/categories")
+      .get(`${process.env.REACT_APP_PATH}/api/categories`)
       .then((response) => {
         setCategories(response.data);
         setIsLoading(false);
@@ -40,7 +40,7 @@ const AllBooks = () => {
       });
 
     axios
-      .get("http://localhost:4000/api/books")
+      .get(`${process.env.REACT_APP_PATH}/api/books`)
       .then((res) => {
         setBooks(res.data);
         setIsLoading(false);
@@ -56,7 +56,7 @@ const AllBooks = () => {
   // Fetch the name of the authors based on authorID in books.
   const fetchAuthors = (authorIds) => {
     axios
-      .get("http://localhost:4000/api/authors", {
+      .get(`${process.env.REACT_APP_PATH}/api/authors`, {
         params: { authorIds: authorIds },
       })
       .then((res) => {
@@ -74,7 +74,7 @@ const AllBooks = () => {
   // Fetch the category name based on categoryID in books.
   const fetchCategories = (categIds) => {
     axios
-      .get("http://localhost:4000/api/categories", {
+      .get(`${process.env.REACT_APP_PATH}/api/categories`, {
         params: { categIds: categIds },
       })
       .then((res) => {
