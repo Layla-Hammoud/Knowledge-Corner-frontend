@@ -64,6 +64,7 @@ function SingleBook() {
     <section className={style.singleBookContainer}>
       <div className={style.mainInfoContainer}>
         <article className={style.imgContainer}>
+  
           <img className={style.image} src={`${process.env.REACT_APP_PATH}/images/${book.image}`} alt="Book cover" />
           <div className={style.StarSingleContainer}>
             {[1, 2, 3, 4, 5].map((star) => (
@@ -72,7 +73,7 @@ function SingleBook() {
           </div>
         </article>
         <article className={style.infoContainer}>
-          <h3 className={style.info}>
+          <h3 className={`${style.info} ${style.bookTitle}`}>
             {book.title}
           </h3>
           <h4 className={style.info}>{author.firstName} {author.lastName}</h4>
@@ -97,7 +98,8 @@ function SingleBook() {
           </p>
         </article>
       </div>
-      <h4 className={style.suggestedBookTitle}>Readers also enjoyed</h4>
+      <div className={style.suggestedBookHolder}>
+ <h4 className={style.suggestedBookTitle}>Readers also enjoyed</h4>
       <aside className={style.suggestedBook}>
       {books.map((item, id) => (
           <div key={id}>
@@ -110,6 +112,8 @@ function SingleBook() {
           </div>
         ))}
       </aside>
+      </div>
+     
     </section>
   );
 }
