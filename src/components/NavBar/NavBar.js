@@ -118,21 +118,8 @@ const NavBar = () => {
               About Us
             </NavLink>
           </li>
-
-          <li>
-            <NavLink
-              onClick={() => {
-                setActive([false, false, false, false, true, false]);
-              }}
-              className={`${navBarStyle.navLi} ${
-                isActive[4] ? navBarStyle.active : ""
-              } `}
-              // to={"./"}
-            >
-              Log In
-            </NavLink>
-          </li>
         </ul>
+        <div className={navBarStyle.loginBtn} onClick={()=> console.log('Login')}>Login</div>
       </nav>
     </div>
   );

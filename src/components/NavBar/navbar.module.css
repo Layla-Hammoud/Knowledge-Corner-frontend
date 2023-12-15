@@ -62,6 +62,14 @@
   /* padding: 10px; */
   border-bottom: 2px solid var(--primary-color);
 }
+.loginBtn{
+  background-color: #03151E;
+  color: white;
+  border: 1px solid white;
+  padding: 10px;
+  cursor: pointer;
+  border-radius: var(--border-radius);
+}
 
 .loginBtnNav {
   padding: 10px 20px;
