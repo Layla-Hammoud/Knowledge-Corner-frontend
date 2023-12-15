@@ -9,22 +9,26 @@ function LoginForm() {
   return (
     <>
       <div className={style.loginWrapper}>
-        <label>Email</label>
-        <input
-          name="email"
-          value={credentials.email}
-          className={style.loginInput}
-          type="text"
-          onChange={handleChange}
-        />
-        <label>Password</label>
-        <input
-          name="password"
-          value={credentials.password}
-          className={style.loginInput}
-          type="password"
-          onChange={handleChange}
-        />
+        <div className={style.inputLabelWrapper}>
+          <label>Email</label>
+          <input
+            name="email"
+            value={credentials.email}
+            className={style.loginInput}
+            type="text"
+            onChange={handleChange}
+          />
+        </div>
+        <div className={style.inputLabelWrapper}>
+          <label>Password</label>
+          <input
+            name="password"
+            value={credentials.password}
+            className={style.loginInput}
+            type="password"
+            onChange={handleChange}
+          />
+        </div>
       </div>
       <div className={style.loginBtnWrapper}>
         <button
@@ -33,7 +37,9 @@ function LoginForm() {
             e.preventDefault();
             console.log("Button");
           }}
-        >Sign In</button>
+        >
+          Sign In
+        </button>
       </div>
     </>
   );

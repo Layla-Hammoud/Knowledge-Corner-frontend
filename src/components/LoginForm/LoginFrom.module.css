@@ -24,3 +24,8 @@
   border-color: #03151e;
   background-color: #fff;
 }
+.inputLabelWrapper{
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
