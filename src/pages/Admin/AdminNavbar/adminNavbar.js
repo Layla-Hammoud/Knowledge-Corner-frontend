@@ -10,11 +10,17 @@ import { useLocation } from "react-router-dom";
  function AdminNavbar({ handleClick }) {
   const location=useLocation()
   const currentLocation=location.pathname
-  console.log(currentLocation)
+  let locationTitle=currentLocation.slice(16)
+  if(locationTitle===""){ locationTitle="All Books"}
+  else{
+    locationTitle=locationTitle.slice(0,3)+" "+locationTitle.slice(3)
+  }
   return (
   
     <div className={adminNavbarStyle.navbarComponent}>
-      <h1 className={adminNavbarStyle.dashboardtitle}>Dashboard</h1>
+      <h1 className={adminNavbarStyle.dashboardtitle}>
+        Dashboard - {locationTitle}
+        </h1>
       <div className={adminNavbarStyle.outerDiv}>
         <div onClick={handleClick}>
           <Link

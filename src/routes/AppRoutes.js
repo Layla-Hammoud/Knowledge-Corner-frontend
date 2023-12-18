@@ -9,6 +9,7 @@ import UserOutlet from "../Outlet/userOutlet";
 import NotFound from '../components/NotFound/WebsiteNotFound'
 import AboutUs from '../pages/AboutUs/AboutUs';
 import SingleAuther from '../pages/SingleAuther/SingleAuther';
+import { Librairies } from '../pages/Libraries/Librairies';
 
 function AppRoutes() {
   return (
@@ -21,6 +22,8 @@ function AppRoutes() {
           <Route path="/SingleBook" element={<SingleBook/>}></Route>
           <Route path='/AboutUs' element={<AboutUs/>}></Route>
           <Route path='/SingleAuthor' element={<SingleAuther/>}></Route>
+          <Route path='/Librairies' element={<Librairies/>}></Route>
+
         </Route>
 
         <Route path="/dashboard/*" element={<Dashboard/>}></Route>
