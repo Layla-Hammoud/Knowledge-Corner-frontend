@@ -10,14 +10,20 @@ import NotFound from "../components/NotFound/WebsiteNotFound";
 import AboutUs from "../pages/AboutUs/AboutUs";
 import SingleAuther from "../pages/SingleAuther/SingleAuther";
 import Login from "../pages/Login/Login";
+import { Librairies } from '../pages/Libraries/Librairies';
 
 function AppRoutes() {
   return (
     <Routes>
+
       <Route exact path="/" element={<UserOutlet />}>
-        <Route exact path="/" element={<Landing />}>
-          {" "}
-        </Route>
+        <Route exact path="/" element={<Landing />}> </Route>
+        <Route path="/AllBooks" element={<AllBooks />}></Route>
+        <Route path="/AllAuthors" element={<AllAuthors />}></Route>
+        <Route path="/SingleBook" element={<SingleBook />}></Route>
+        <Route path='/AboutUs' element={<AboutUs />}></Route>
+        <Route path='/SingleAuthor' element={<SingleAuther />}></Route>
+        <Route path='/Librairies' element={<Librairies />}></Route>
         <Route path="/AllBooks" element={<AllBooks />}></Route>
         <Route path="/AllAuthors" element={<AllAuthors />}></Route>
         <Route path="/SingleBook" element={<SingleBook />}></Route>

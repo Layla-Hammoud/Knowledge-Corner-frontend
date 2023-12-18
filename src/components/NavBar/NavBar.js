@@ -13,6 +13,7 @@ const NavBar = () => {
     false,
     false,
     false,
+    false
   ]);
   const [isResponsive, setIsResponsive] = useState(window.innerWidth <= 480);
 
@@ -87,6 +88,19 @@ const NavBar = () => {
               className={`${navBarStyle.navLi} ${
                 isActive[1] ? navBarStyle.active : ""
               }`}
+              to={"./Librairies"}
+            >
+              Librairies
+            </NavLink>
+          </li>
+          <li>
+            <NavLink
+              onClick={() => {
+                setActive([false, false,true, false, false, false]);
+              }}
+              className={`${navBarStyle.navLi} ${
+                isActive[2] ? navBarStyle.active : ""
+              }`}
               to={"./AllBooks"}
             >
               All Books
@@ -95,10 +109,10 @@ const NavBar = () => {
           <li>
             <NavLink
               onClick={() => {
-                setActive([false, false, true, false, false, false]);
+                setActive([false, false,false, true, false, false, false]);
               }}
               className={`${navBarStyle.navLi} ${
-                isActive[2] ? navBarStyle.active : ""
+                isActive[3] ? navBarStyle.active : ""
               }`}
               to={"./AllAuthors"}
             >
@@ -108,10 +122,10 @@ const NavBar = () => {
           <li>
             <NavLink
               onClick={() => {
-                setActive([false, false, false, true, false, false]);
+                setActive([false,false, false, false, true, false, false]);
               }}
               className={`${navBarStyle.navLi} ${
-                isActive[3] ? navBarStyle.active : ""
+                isActive[4] ? navBarStyle.active : ""
               }`}
               to={"./AboutUs"}
             >

@@ -4,16 +4,28 @@ import books from "../../../assets/icons/download 1.svg";
 import authors from "../../../assets/icons/4649486-200 1.svg";
 import categories from "../../../assets/icons/Category.svg";
 import { Link } from "react-router-dom";
+import { useLocation } from "react-router-dom";
 
-function adminNavbar({ handleClick }) {
+
+ function AdminNavbar({ handleClick }) {
+  const location=useLocation()
+  const currentLocation=location.pathname
+  let locationTitle=currentLocation.slice(16)
+  if(locationTitle===""){ locationTitle="All Books"}
+  else{
+    locationTitle=locationTitle.slice(0,3)+" "+locationTitle.slice(3)
+  }
   return (
+  
     <div className={adminNavbarStyle.navbarComponent}>
-      <h1 className={adminNavbarStyle.dashboardtitle}>Dashboard</h1>
+      <h1 className={adminNavbarStyle.dashboardtitle}>
+        Dashboard - {locationTitle}
+        </h1>
       <div className={adminNavbarStyle.outerDiv}>
         <div onClick={handleClick}>
           <Link
-            to={"/dashboard/adminAllBooks"}
-            className={adminNavbarStyle.innerDiv}
+            to={"/dashboard/adminAllBooks"} 
+            className={`${adminNavbarStyle.innerDiv} ${currentLocation==="/dashboard"|| currentLocation==="/dashboard/adminAllBooks"?adminNavbarStyle.innerDivActive:null} `}
           >
             <img src={books} alt="books" />
             <p className={adminNavbarStyle.threeButton}>Books</p>
@@ -21,16 +33,16 @@ function adminNavbar({ handleClick }) {
         </div>
 
         <Link
-          to={"/dashboard/adminAllAuthors"}
-          className={adminNavbarStyle.innerDiv}
-        >
+          to={"/dashboard/adminAllAuthors"} 
+          className={`${adminNavbarStyle.innerDiv} ${currentLocation==="/dashboard/adminAllAuthors"?adminNavbarStyle.innerDivActive:null}`}
+          >
           <img src={authors} alt="authors" />
           <p className={adminNavbarStyle.threeButton}>Authors</p>
         </Link>
 
         <Link
-          to={"/dashboard/adminAllCategories"}
-          className={adminNavbarStyle.innerDiv}
+          to={"/dashboard/adminAllCategories"} 
+          className={`${adminNavbarStyle.innerDiv} ${currentLocation==="/dashboard/adminAllCategories"?adminNavbarStyle.innerDivActive:null}`}
         >
           <img src={categories} alt="categories" />
           <p className={adminNavbarStyle.threeButton}>Categories</p>
@@ -64,4 +76,4 @@ function adminNavbar({ handleClick }) {
   );
 }
 
-export default adminNavbar;
+export default AdminNavbar;
