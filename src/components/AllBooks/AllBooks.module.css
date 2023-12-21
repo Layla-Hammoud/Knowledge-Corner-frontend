@@ -110,16 +110,22 @@
   line-height: 29px;
   margin-left: 2rem;
   display: flex;
+  /* border: 1px solid red; */
+  padding:5px 0;
+
 }
 .bookCheckbox input {
   margin-right: 10px;
 }
+
 .booksCategory {
-  border: 1px #ccc solid;
+  /* border: 1px #ccc solid; */
+  border:2px solid #949494;
   padding: 10px;
-  background-color: #e8f1ee;
-  border-radius: 14px;
+  /* background-color: #e8f1ee; */
+  /* border-radius: 14px; */
 }
+
 /* filter fildes for responsive*/
 .filterCategories img {
   width: 20px;

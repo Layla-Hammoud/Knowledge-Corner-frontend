@@ -18,7 +18,7 @@
     margin: 0 auto;
 }
 
-.innerDiv{
+/* .innerDiv{
     display: flex;
     flex-direction: row;
     align-items: center;
@@ -37,7 +37,34 @@
 .innerDiv:hover{
     transform: scale(1.05);
     opacity: 0.5;
+} */
+
+.innerDiv{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    column-gap: 20px;
+    width: 200px;
+    padding: 10px;
+    border: 3px solid black;
+    border-radius: 15px;
+    cursor: pointer;
+    text-decoration: none;
+    background-color: white;
+    transition: background-color 0.3s, color 0.3s, transform 0.3s;
+    opacity: 0.6;
+
 }
+
+.innerDiv:hover{
+    transform: scale(1.05);
+    opacity: 1;
+}
+.innerDivActive{
+    opacity: 1;
+}
+
 
 .threeButton{
     border: none;

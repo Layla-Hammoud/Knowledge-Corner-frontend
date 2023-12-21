@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import { NavLink } from "react-router-dom";
+import { NavLink, useNavigate } from "react-router-dom";
 import Icon from "../../assets/icons/books-stack-of-three 2.svg";
 import Icone from "../../assets/icons/Group.svg";
 import navBarStyle from "./navbar.module.css";
@@ -13,7 +13,9 @@ const NavBar = () => {
     false,
     false,
     false,
+    false
   ]);
+  const navigate = useNavigate();
   const [isResponsive, setIsResponsive] = useState(window.innerWidth <= 480);
 
   const handleSearch = () => {
@@ -87,6 +89,19 @@ const NavBar = () => {
               className={`${navBarStyle.navLi} ${
                 isActive[1] ? navBarStyle.active : ""
               }`}
+              to={"./Librairies"}
+            >
+              Librairies
+            </NavLink>
+          </li>
+          <li>
+            <NavLink
+              onClick={() => {
+                setActive([false, false,true, false, false, false]);
+              }}
+              className={`${navBarStyle.navLi} ${
+                isActive[2] ? navBarStyle.active : ""
+              }`}
               to={"./AllBooks"}
             >
               All Books
@@ -95,10 +110,10 @@ const NavBar = () => {
           <li>
             <NavLink
               onClick={() => {
-                setActive([false, false, true, false, false, false]);
+                setActive([false, false,false, true, false, false, false]);
               }}
               className={`${navBarStyle.navLi} ${
-                isActive[2] ? navBarStyle.active : ""
+                isActive[3] ? navBarStyle.active : ""
               }`}
               to={"./AllAuthors"}
             >
@@ -108,31 +123,23 @@ const NavBar = () => {
           <li>
             <NavLink
               onClick={() => {
-                setActive([false, false, false, true, false, false]);
+                setActive([false,false, false, false, true, false, false]);
               }}
               className={`${navBarStyle.navLi} ${
-                isActive[3] ? navBarStyle.active : ""
+                isActive[4] ? navBarStyle.active : ""
               }`}
               to={"./AboutUs"}
             >
               About Us
             </NavLink>
           </li>
-
-          <li>
-            <NavLink
-              onClick={() => {
-                setActive([false, false, false, false, true, false]);
-              }}
-              className={`${navBarStyle.navLi} ${
-                isActive[4] ? navBarStyle.active : ""
-              } `}
-              // to={"./"}
-            >
-              Log In
-            </NavLink>
-          </li>
         </ul>
+        <div
+          className={navBarStyle.loginBtn}
+          onClick={() => navigate('/login')}
+        >
+          Login
+        </div>
       </nav>
     </div>
   );
